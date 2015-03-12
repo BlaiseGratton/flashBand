@@ -1,0 +1,13 @@
+﻿<!DOCTYPE html>
+<html ng-app="pitchApp">
+<head>
+    <title ng-bind="helloAngular"></title>
+</head>
+<body>
+    <input type="text" ng-model="helloAngular" />
+    <h1>{{ helloAngular }}</h1>
+    @Scripts.Render("~/bundles/jQuery")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/pitchApp")
+</body>
+</html>
