@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
 <html ng-app="pitchApp">
 <head>
-    <title ng-bind="helloAngular"></title>
+    <title ng-bind="landCtrl.testModel"></title>
 </head>
-<body>
-    <input type="text" ng-model="helloAngular" />
-    <h1>{{ helloAngular }}</h1>
+<body ng-controller="LandingController as landCtrl">
+    <input type="text" ng-model="landCtrl.testModel" />
+    <h1>{{landCtrl.testModel }}</h1>
     @Scripts.Render("~/bundles/jQuery")
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/pitchApp")
