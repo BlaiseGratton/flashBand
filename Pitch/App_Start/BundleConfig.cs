@@ -14,7 +14,8 @@ namespace Pitch
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/scripts/angular.min.js",
-                      "~/scripts/angular-route.min.js"
+                      "~/scripts/angular-route.min.js",
+                      "~/scripts/angular-resource.min.js"
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/jQuery").Include(
@@ -25,7 +26,8 @@ namespace Pitch
             bundles.Add(new ScriptBundle("~/bundles/pitchApp")
                       .Include("~/scripts/main.js",
                       "~/scripts/main.config.js")
-                      .IncludeDirectory("~/scripts/Controllers", "*.js"));
+                      .IncludeDirectory("~/scripts/Controllers", "*.js")
+                      .IncludeDirectory("~/scripts/Factories", "*.js"));
 
             BundleTable.EnableOptimizations = true;
         }

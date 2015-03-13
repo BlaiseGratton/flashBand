@@ -1,6 +1,6 @@
 ﻿; (function () {
     'use strict';
 
-    angular.module('pitchApp', ['ngRoute'])
+    angular.module('pitchApp', ['ngRoute', 'ngResource'])
 
 }());

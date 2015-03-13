@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
 using System.Web.Http;
 
 namespace Pitch
@@ -19,6 +21,9 @@ namespace Pitch
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
+            config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType); 
         }
     }
 }

@@ -2,11 +2,16 @@
     'use strict';
     
     angular.module('pitchApp')
-        .controller('LandingController', function($http) {
+        .controller('LandingController', ['players', '$scope', function(players, $scope) {
 
             var vm = this;
 
-            vm.testModel = "stringstring";
+            players.query(function(data) {
+                $scope.testModel = angular.fromJson(data);
+                console.log($scope.testModel[0].userName);
 
-        })
+            });
+
+
+        }])
 }());

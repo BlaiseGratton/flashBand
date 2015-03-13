@@ -29,5 +29,7 @@ namespace Pitch.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Pitch.Models.Player> Players { get; set; }
     }
 }
