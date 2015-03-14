@@ -7,11 +7,8 @@
             var vm = this;
 
             players.query(function(data) {
-                $scope.testModel = angular.fromJson(data);
-                console.log($scope.testModel[0].userName);
-
+                $scope.user = data;
+                $scope.testModel = $scope.user[0].userName;
             });
-
-
         }])
 }());
