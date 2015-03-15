@@ -14,11 +14,13 @@ using Newtonsoft.Json;
 using System.Web.Services;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
+using Pitch.Repository;
 
 namespace Pitch.Controllers
 {
     public class PlayersController : ApiController
     {
+        private AppRepository repo = new AppRepository();
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Players
@@ -27,9 +29,9 @@ namespace Pitch.Controllers
         public List<Player> GetPlayers()
         {
             Player player = new Player("Blaise", "a@a.com", new int[] { 1 }, new int[] { 1 });
-            string json = JsonConvert.SerializeObject(player, Formatting.Indented);
+            repo.AddPlayer(player);
             List<Player> players = new List<Player>();
-            players.Add(player);
+            players = repo.GetAllPlayers().ToList();
             return players;
             //return db.Players;
         }

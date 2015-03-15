@@ -33,6 +33,23 @@ namespace Pitch.Repository
             _dbContext.SaveChanges();
         }
 
+        public void Dispose()
+        {
+            _dbContext.Dispose();
+        }
+
+        public void Clear()
+        {
+            var a = this.GetAllPlayers();
+            _dbContext.Players.RemoveRange(a);
+            var b = this.GetAllInstruments();
+            _dbContext.Instruments.RemoveRange(b);
+            var c = this.GetAllSongs();
+            _dbContext.Songs.RemoveRange(c);
+            _dbContext.SaveChanges();
+
+        }
+
         public int GetPlayersCount()
         {
             return _dbContext.Players.Count<Models.Player>();
