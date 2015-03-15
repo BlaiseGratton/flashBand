@@ -25,7 +25,7 @@ namespace Pitch
 
             bundles.Add(new ScriptBundle("~/bundles/pitchApp")
                       .Include("~/scripts/main.js",
-                      "~/scripts/main.config.js")
+                      "~/scripts/main-config.js")
                       .IncludeDirectory("~/scripts/Controllers", "*.js")
                       .IncludeDirectory("~/scripts/Factories", "*.js"));
 

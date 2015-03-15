@@ -28,8 +28,6 @@ namespace Pitch.Controllers
         [HttpGet]
         public List<Player> GetPlayers()
         {
-            Player player = new Player("Blaise", "a@a.com", new int[] { 1 }, new int[] { 1 });
-            repo.AddPlayer(player);
             List<Player> players = new List<Player>();
             players = repo.GetAllPlayers().ToList();
             return players;
@@ -38,17 +36,23 @@ namespace Pitch.Controllers
 
         // GET: api/Players/5
         [Route("api/Players/{id}")]
+        [HttpGet]
         [ResponseType(typeof(Player))]
-        public async Task<IHttpActionResult> GetPlayer(int id)
+        public Models.Player GetPlayer(int id)
         {
-            Player player = await db.Players.FindAsync(id);
-            if (player == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(player);
+            Player player = repo.GetPlayerById(id);
+            return player;
         }
+        //public async Task<IHttpActionResult> GetPlayer(int id)
+        //{
+        //    Player player = await db.Players.FindAsync(id);
+        //    if (player == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(player);
+        //}
 
         // PUT: api/Players/5
         [ResponseType(typeof(void))]
