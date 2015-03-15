@@ -10,12 +10,12 @@ namespace Pitch.Models
         public int ID { get; set; }
         public string userName { get; set; }
         private string email { get; set; }
-        public int[] instrumentIDs { get; set; }
-        public int[] songIDs { get; set; }
+        public string instrumentIDs { get; set; }
+        public string songIDs { get; set; }
 
         public Player() { }
 
-        public Player(string userName, string email, int[] instrumentIDs, int[] songIDs)
+        public Player(string userName, string email, string instrumentIDs, string songIDs)
         {
             this.userName = userName;
             this.email = email;

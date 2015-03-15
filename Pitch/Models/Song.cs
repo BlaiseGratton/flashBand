@@ -9,11 +9,11 @@ namespace Pitch.Models
     {
         public int ID { get; set; }
         public string title { get; set; }
-        public int[] playerIDs { get; set; }
+        public string playerIDs { get; set; }
 
         public Song() { }
 
-        public Song(string title, int[] playerIDs)
+        public Song(string title, string playerIDs)
         {
             this.title = title;
             this.playerIDs = playerIDs;
