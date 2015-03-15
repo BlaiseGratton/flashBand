@@ -10,26 +10,26 @@ namespace Pitch.Tests
         [TestMethod]
         public void TestPlayerConstructor()
         {
-            Player newPlayer = new Player("CoolGuy07", "cool@guy.com", new int[] { 1, 2, 3 }, new int[] { 4, 5, 6 });
+            Player newPlayer = new Player("CoolGuy07", "cool@guy.com", "1,2,3", "4,5,6");
             Assert.AreEqual("CoolGuy07", newPlayer.userName);
-            Assert.AreEqual(new int[] { 1, 2, 3 }.ToString(), newPlayer.instrumentIDs.ToString());
-            Assert.AreEqual(new int[] { 4, 5, 6 }.ToString(), newPlayer.songIDs.ToString());
+            Assert.AreEqual("1,2,3", newPlayer.instrumentIDs);
+            Assert.AreEqual("4,5,6", newPlayer.songIDs);
         }
 
         [TestMethod]
         public void TestInstrumentConstructor()
         {
-            Instrument newInst = new Instrument("piano", new int[] { 1, 2, 3 });
+            Instrument newInst = new Instrument("piano", "1,2,3");
             Assert.AreEqual("piano", newInst.name);
-            Assert.AreEqual(new int[] { 1, 2, 3 }.ToString(), newInst.playerIDs.ToString());
+            Assert.AreEqual("1,2,3", newInst.playerIDs);
         }
 
         [TestMethod]
         public void TestSongConstructor()
         {
-            Song newSong = new Song("Tequila", new int[] { 1, 2, 3 });
+            Song newSong = new Song("Tequila", "1,2,3");
             Assert.AreEqual("Tequila", newSong.title);
-            Assert.AreEqual(new int[] { 1, 2, 3 }.ToString(), newSong.playerIDs.ToString());
+            Assert.AreEqual("1,2,3", newSong.playerIDs);
         }
     }
 }

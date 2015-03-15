@@ -38,7 +38,7 @@ namespace Pitch.Tests
         {
             repo.Clear();
             Assert.AreEqual(0, repo.GetPlayersCount());
-            Player player = new Player("Blaise", "b@g.com", new int[] { 1, 2, 3 }, new int[] { 1, 2, 3 });
+            Player player = new Player("Blaise", "b@g.com", "1,2,3", "1,2,3");
             Assert.AreEqual(1, repo.GetPlayersCount());
         }
     }
