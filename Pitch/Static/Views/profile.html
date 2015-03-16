@@ -2,3 +2,14 @@
     <input type="text" ng-model="profCtrl.playerIdInput"/>
     <button ng-click="profCtrl.loadPlayer(profCtrl.playerIdInput)">Get Profile</button>
 </div>
+<div>
+    <label>Username</label>
+    <input type="text" ng-model="profCtrl.playerInfo.userName"/>
+    <label>Email</label>
+    <input type="text" ng-model="profCtrl.playerInfo.email"/>
+    <label>Instrument IDs</label>
+    <input type="text" ng-model="profCtrl.playerInfo.instrumentIDs"/>
+    <label>Song IDs</label>
+    <input type="text" ng-model="profCtrl.playerInfo.songIDs"/>
+    <button ng-click="profCtrl.postPlayer(profCtrl.playerInfo)">Create Profile</button>
+</div>

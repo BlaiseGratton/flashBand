@@ -5,7 +5,6 @@
             var vm = this;
             players.query(function(data) {
                 $scope.user = data;
-                $scope.testModel = $scope.user[0].userName;
             });
         }])
 }());

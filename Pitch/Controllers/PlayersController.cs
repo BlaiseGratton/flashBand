@@ -15,6 +15,7 @@ using System.Web.Services;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using Pitch.Repository;
+using Newtonsoft.Json.Linq;
 
 namespace Pitch.Controllers
 {
@@ -90,18 +91,19 @@ namespace Pitch.Controllers
         }
 
         // POST: api/Players
-        [ResponseType(typeof(Player))]
-        public async Task<IHttpActionResult> PostPlayer(Player player)
+        [Route("api/Players")]
+        [HttpPost]
+        public HttpResponseMessage PostPlayer(string playerString)
         {
+            Player deserializedPlayer = JsonConvert.DeserializeObject<Player>(playerString);
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-
-            db.Players.Add(player);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = player.ID }, player);
+            repo.AddPlayer(deserializedPlayer);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, deserializedPlayer);
+            response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id=deserializedPlayer.ID }));
+            return response;
         }
 
         // DELETE: api/Players/5
