@@ -25,6 +25,7 @@ namespace Pitch.Controllers
         //private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Players
+        [Authorize]
         [Route("api/Players")]
         [HttpGet]
         public List<Player> GetPlayers()
@@ -36,6 +37,7 @@ namespace Pitch.Controllers
         }
 
         // GET: api/Players/5
+        [Authorize]
         [Route("api/Players/{id}")]
         [HttpGet]
         [ResponseType(typeof(Player))]

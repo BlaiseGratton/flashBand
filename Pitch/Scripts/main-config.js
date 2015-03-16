@@ -5,20 +5,35 @@
         .config(['$routeProvider', function($routeProvider){
             $routeProvider
             .when('/prof', {
-                templateUrl: 'Static/Views/profile.html',
+                templateUrl: '/Static/Views/profile.html',
                 controller: 'ProfileController',
                 controllerAs: 'profCtrl',
-                //private: true
             })
             .when('/prof/edit', {
-                templateUrl: 'Static/Views/edit-profile.html',
+                templateUrl: '/Static/Views/edit-profile.html',
                 controller: 'EditProfileController',
                 controllerAs: 'profCtrl',
-                //private: true
+            })
+            .when('/signup', {
+                templateUrl: '/Static/Views/signup.html',
+                controller: 'SignupController',
+                controllerAs: 'signCtrl'
+            })
+            .when('/login', {
+                templateUrl: '/Static/Views/login.html',
+                controller: 'LoginController',
+                controllerAs: 'loginCtrl'
             })
             .when('/', {
-                templateUrl: 'Views/Home/index.cshtml'
+                templateUrl: '/Views/Home/index.cshtml'
             })
             .otherwise({redirectTo: '/'});
         }])
+        
+    angular.module('pitchApp')
+        .run(['authService', function (authService) {
+            authService.fillAuthData();
+        }])
+
+    
 }());

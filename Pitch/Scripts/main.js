@@ -1,6 +1,4 @@
-﻿; (function () {
+﻿;(function(){
     'use strict';
-
-    angular.module('pitchApp', ['ngRoute', 'ngResource'])
-
+    angular.module('pitchApp', ['LocalStorageModule', 'ngRoute', 'ngResource'])
 }());

@@ -15,7 +15,8 @@ namespace Pitch
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/scripts/angular.min.js",
                       "~/scripts/angular-route.min.js",
-                      "~/scripts/angular-resource.min.js"
+                      "~/scripts/angular-resource.min.js",
+                      "~/scripts/angular-local-storage.min.js"
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/jQuery").Include(
