@@ -1,14 +1,21 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http;
 
-[assembly: OwinStartupAttribute(typeof(Pitch.Startup))]
+[assembly: OwinStartup(typeof(Pitch.Startup))]
 namespace Pitch
 {
-    public partial class Startup
+    public class Startup
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            HttpConfiguration config = new HttpConfiguration();
+            WebApiConfig.Register(config);
+            app.UseWebApi(config);
         }
     }
 }

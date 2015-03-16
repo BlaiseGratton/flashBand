@@ -22,7 +22,7 @@ namespace Pitch.Controllers
     public class PlayersController : ApiController
     {
         private AppRepository repo = new AppRepository();
-        private ApplicationDbContext db = new ApplicationDbContext();
+        //private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Players
         [Route("api/Players")]
@@ -69,22 +69,22 @@ namespace Pitch.Controllers
                 return BadRequest();
             }
 
-            db.Entry(player).State = EntityState.Modified;
+            //db.Entry(player).State = EntityState.Modified;
 
             try
             {
-                await db.SaveChangesAsync();
+                //await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PlayerExists(id))
+                /*if (!PlayerExists(id))
                 {
                     return NotFound();
                 }
                 else
                 {
                     throw;
-                }
+                }*/
             }
 
             return StatusCode(HttpStatusCode.NoContent);
@@ -110,7 +110,7 @@ namespace Pitch.Controllers
         [ResponseType(typeof(Player))]
         public async Task<IHttpActionResult> DeletePlayer(int id)
         {
-            Player player = await db.Players.FindAsync(id);
+            /*Player player = await db.Players.FindAsync(id);
             if (player == null)
             {
                 return NotFound();
@@ -119,21 +119,22 @@ namespace Pitch.Controllers
             db.Players.Remove(player);
             await db.SaveChangesAsync();
 
-            return Ok(player);
+            return Ok(player);*/
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            /*if (disposing)
             {
                 db.Dispose();
             }
-            base.Dispose(disposing);
+            base.Dispose(disposing);*/
         }
 
         private bool PlayerExists(int id)
         {
-            return db.Players.Count(e => e.ID == id) > 0;
+            return true; //db.Players.Count(e => e.ID == id) > 0;
         }
     }
 }
