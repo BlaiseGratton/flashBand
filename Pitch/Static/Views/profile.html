@@ -1,6 +1,12 @@
 ﻿<div>
     <input type="text" ng-model="profCtrl.playerIdInput"/>
     <button ng-click="profCtrl.loadPlayer(profCtrl.playerIdInput)">Get Profile</button>
+    <div>
+        <h1>Profile Info</h1>
+        <p>{{user.userName}}</p>
+        <p>{{user.instrumentIDs}}</p>
+        <p>{{user.songIDs}}</p>
+    </div>
 </div>
 <div>
     <label>Username</label>
