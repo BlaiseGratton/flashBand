@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html ng-app="pitchApp">
+<html data-ng-app="pitchApp">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -27,9 +27,23 @@
             </div>
         </div>
     </div>
-    <div ng-view></div>
-    @Scripts.Render("~/bundles/jQuery")
-    @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/bundles/pitchApp")
+    <div data-ng-view></div>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-local-storage.min.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/loading-bar.min.js"></script>
+    <script src="~/Scripts/App/main.js"></script>
+    <script src="~/Scripts/App/main-config.js"></script>
+    <script src="~/Scripts/Controllers/homeController.js"></script>
+    <script src="~/Scripts/Controllers/indexController.js"></script>
+    <script src="~/Scripts/Controllers/loginController.js"></script>
+    <script src="~/Scripts/Controllers/profileController.js"></script>
+    <script src="~/Scripts/Controllers/signupController.js"></script>
+    <script src="~/Scripts/Factories/authInterceptorService.js"></script>
+    <script src="~/Scripts/Factories/authService.js"></script>
+    <script src="~/Scripts/Factories/playerFactory.js"></script>
 </body>
 </html>
