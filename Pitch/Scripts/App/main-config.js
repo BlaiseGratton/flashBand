@@ -1,8 +1,6 @@
-﻿;(function(){
-  'use strict';
-  
-    angular.module('pitchApp')
-        .config(['$routeProvider', function($routeProvider){
+﻿'use strict';
+angular.module('pitchApp')
+    .config(function($routeProvider){
             $routeProvider
             .when('/prof', {
                 templateUrl: '/Static/Views/profile.html',
@@ -17,23 +15,26 @@
             .when('/signup', {
                 templateUrl: '/Static/Views/signup.html',
                 controller: 'SignupController',
-                controllerAs: 'signCtrl'
+                //controllerAs: 'signCtrl'
             })
             .when('/login', {
                 templateUrl: '/Static/Views/login.html',
                 controller: 'LoginController',
-                controllerAs: 'loginCtrl'
+                //controllerAs: 'loginCtrl'
+            })
+            .when('/home', {
+                templateUrl: '/Static/Views/home.html',
+                controller: 'HomeController',
+                //controllerAs: 'homeCtrl'
             })
             .when('/', {
                 templateUrl: '/Views/Home/index.cshtml'
             })
-            .otherwise({redirectTo: '/'});
-        }])
-        
-    angular.module('pitchApp')
-        .run(['authService', function (authService) {
-            authService.fillAuthData();
-        }])
+            .otherwise({redirectTo: '/home'});
+        })
 
-    
-}());
+angular.module('pitchApp')
+    .run(['authService', function (authService) {
+        authService.fillAuthData();
+    }])
+        

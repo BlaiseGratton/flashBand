@@ -1,6 +1,6 @@
-﻿;(function(){
-    'use strict';
-    app.controller('SignupController', ['$scope', '$location', '$timeout', 'authService', function ($scope, $location, $timeout, authService) {
+﻿'use strict';
+angular.module('pitchApp')
+    .controller('SignupController', ['$scope', '$location', '$timeout', 'authService', function($scope, $location, $timeout, authService){
 
         $scope.savedSuccessfully = false;
         $scope.message = "";
@@ -39,4 +39,3 @@
         }
 
     }]);
-}());

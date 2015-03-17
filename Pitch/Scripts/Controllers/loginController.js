@@ -1,6 +1,6 @@
-﻿;(function(){
-    'use strict';
-    app.controller('LoginController', ['$scope', '$location', 'authService', function ($scope, $location, authService) {
+﻿'use strict';
+angular.module('pitchApp')
+    .controller('LoginController', ['$scope', '$location', 'authService', function ($scope, $location, authService) {
 
         $scope.loginData = {
             userName: "",
@@ -22,4 +22,3 @@
         };
 
     }]);
-}());

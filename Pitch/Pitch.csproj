@@ -226,6 +226,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-local-storage .js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-resource.min.js" />
@@ -246,18 +247,25 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-resource.min.js.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\Factories\authInterceptorService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\Controllers\landingController.js" />
+    <Content Include="Scripts\Controllers\homeController.js" />
+    <Content Include="Scripts\Controllers\indexController.js" />
+    <Content Include="Scripts\Controllers\loginController.js" />
     <Content Include="Scripts\Controllers\profileController.js" />
+    <Content Include="Scripts\Controllers\signupController.js" />
     <Content Include="Scripts\Factories\authService.js" />
     <Content Include="Scripts\Factories\playerFactory.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\npm.js" />
-    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\App\main.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Static\Views\home.html" />
+    <Content Include="Static\Views\login.html" />
     <Content Include="Static\Views\profile.html" />
+    <Content Include="Static\Views\signup.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -268,7 +276,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Scripts\main-config.js" />
+    <Content Include="Scripts\App\main-config.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

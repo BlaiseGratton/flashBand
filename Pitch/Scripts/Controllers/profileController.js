@@ -1,7 +1,6 @@
-﻿;(function(){
-    'use strict';
-    angular.module('pitchApp')
-        .controller('ProfileController', ['players', '$scope', function(players, $scope) {
+﻿'use strict';
+angular.module('pitchApp')
+    .controller('ProfileController', ['players', '$scope', function(players, $scope) {
             var vm = this;
 
             vm.loadPlayer = function(id){
@@ -16,4 +15,3 @@
             };
 
         }])
-}());

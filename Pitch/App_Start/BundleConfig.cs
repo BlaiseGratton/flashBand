@@ -16,7 +16,7 @@ namespace Pitch
                       "~/scripts/angular.min.js",
                       "~/scripts/angular-route.min.js",
                       "~/scripts/angular-resource.min.js",
-                      "~/scripts/angular-local-storage.min.js"
+                      "~/scripts/angular-local-storage.js"
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/jQuery").Include(
@@ -25,8 +25,7 @@ namespace Pitch
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/pitchApp")
-                      .Include("~/scripts/main.js",
-                      "~/scripts/main-config.js")
+                      .IncludeDirectory("~/scripts/App", "*.js")
                       .IncludeDirectory("~/scripts/Controllers", "*.js")
                       .IncludeDirectory("~/scripts/Factories", "*.js"));
 
