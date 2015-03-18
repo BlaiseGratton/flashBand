@@ -32,9 +32,9 @@ angular.module('pitchApp')
         })
         .otherwise({ redirectTo: '/home' });
     })
-        .config(function ($httpProvider) {
-            $httpProvider.interceptors.push('authInterceptorService');
-        });
+    .config(function ($httpProvider) {
+        $httpProvider.interceptors.push('authInterceptorService');
+    });
 
 angular.module('pitchApp')
     .run(['authService', function (authService) {
