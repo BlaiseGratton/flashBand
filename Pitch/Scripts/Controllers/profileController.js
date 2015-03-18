@@ -4,7 +4,6 @@ angular.module('pitchApp')
         var vm = this;
 
         vm.loadPlayer = function (id) {
-            console.log(id);
             $scope.user = players.get({ id: id });
             console.log($scope.user);
         };

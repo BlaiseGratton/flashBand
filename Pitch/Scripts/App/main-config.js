@@ -28,7 +28,7 @@ angular.module('pitchApp')
             //controllerAs: 'homeCtrl'
         })
         .when('/', {
-            templateUrl: '/Views/Home/index.cshtml'
+            templateUrl: '/Static/Views/home.html'
         })
         .otherwise({ redirectTo: '/home' });
     })

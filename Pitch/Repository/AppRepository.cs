@@ -71,6 +71,14 @@ namespace Pitch.Repository
             return query.ToList<Models.UserHash>();
         }
 
+        public int GetPlayerIdByName(string userName)
+        {
+            var query = from UserHash in _dbContext.Players
+                        where UserHash.userName == userName 
+                        select UserHash;
+            return query.First<Models.UserHash>().ID;
+        }
+
         public Models.UserHash GetPlayerById(int id)
         {
             var query = from UserHash in _dbContext.Players

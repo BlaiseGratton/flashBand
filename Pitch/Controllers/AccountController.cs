@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Security;
 
 namespace Pitch.Controllers
 {
@@ -21,6 +22,15 @@ namespace Pitch.Controllers
         {
             _repo = new AuthRepository();
             _appRepo = new AppRepository(); // added
+        }
+
+        // GET api/Account/User/{UserId}
+        [HttpGet]
+        [Route("User/{userName}")]
+        public int GetUserId(String userName)
+        {
+            int id = _appRepo.GetPlayerIdByName(userName);
+            return id;
         }
 
         // POST api/Account/Register
