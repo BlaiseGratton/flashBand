@@ -21,7 +21,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li data-ng-hide="!authentication.isAuth"><a data-ng-click="navbarExpanded = !navbarExpanded" data-target="#collapse-target" data-toggle="collapse" href="#">Welcome {{authentication.userName}}</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a data-ng-click="navbarExpanded = !navbarExpanded" data-target="#collapse-target" data-toggle="collapse" href="#/prof">My Profile</a></li>
-                    <li data-ng-hide="!authentication.isAuth"><a data-ng-click="navbarExpanded = !navbarExpanded" data-target="#collapse-target" data-toggle="collapse" href="" data-ng-click="logOut()">Logout</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a data-target="#collapse-target" data-toggle="collapse" href="/" data-ng-click="logOut()">Logout</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a data-ng-click="navbarExpanded = !navbarExpanded" data-target="#collapse-target" data-toggle="collapse" href="#/login">Login</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a data-ng-click="navbarExpanded = !navbarExpanded" data-target="#collapse-target" data-toggle="collapse" href="#/signup">Sign Up</a></li>
                 </ul>
