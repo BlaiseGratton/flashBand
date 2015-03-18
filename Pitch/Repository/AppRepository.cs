@@ -79,9 +79,9 @@ namespace Pitch.Repository
             return query.First<Models.UserHash>();
         }
 
-        public void AddPlayer(Models.UserHash P)
+        public void AddUser(Models.UserHash U)
         {
-            _dbContext.Players.Add(P);
+            _dbContext.Players.Add(U);
             _dbContext.SaveChanges();
         }
 

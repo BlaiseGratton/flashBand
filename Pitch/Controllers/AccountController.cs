@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Pitch.Models;
+using Pitch.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,12 @@ namespace Pitch.Controllers
     public class AccountController : ApiController
     {
         private AuthRepository _repo = null;
+        private AppRepository _appRepo = null; // added
 
         public AccountController()
         {
             _repo = new AuthRepository();
+            _appRepo = new AppRepository(); // added
         }
 
         // POST api/Account/Register
@@ -29,6 +32,9 @@ namespace Pitch.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            UserHash newHash = new UserHash(userModel.UserName); // added
+            _appRepo.AddUser(newHash); // added
 
             IdentityResult result = await _repo.RegisterUser(userModel);
 
