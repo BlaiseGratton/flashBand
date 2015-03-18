@@ -9,17 +9,12 @@ namespace Pitch.Models
     {
         public int ID { get; set; }
         public string name { get; set; }
-        public string playerIDs { get; set; }
 
-        public Instrument()
-        {
+        public Instrument() { }
 
-        }
-
-        public Instrument(string name, string playerIDs)
+        public Instrument(string name)
         {
             this.name = name;
-            this.playerIDs = playerIDs;
         }
     }
 }

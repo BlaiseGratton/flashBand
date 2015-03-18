@@ -5,16 +5,17 @@ using System.Web;
 
 namespace Pitch.Models
 {
-    public class Song
+    public class UserHash
     {
         public int ID { get; set; }
-        public string title { get; set; }
+        public string userName { get; set; }
 
-        public Song() { }
+        public UserHash() { }
 
-        public Song(string title)
+
+        public UserHash(string userName)
         {
-            this.title = title;
+            this.userName = userName;
         }
     }
 }

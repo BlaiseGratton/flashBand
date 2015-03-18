@@ -205,9 +205,17 @@
     <Compile Include="Migrations\201503152315259_Model_CSVs.Designer.cs">
       <DependentUpon>201503152315259_Model_CSVs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503180106079_AuthInitialization.cs" />
+    <Compile Include="Migrations\201503180106079_AuthInitialization.Designer.cs">
+      <DependentUpon>201503180106079_AuthInitialization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503180132014_ModelsAsHashes.cs" />
+    <Compile Include="Migrations\201503180132014_ModelsAsHashes.Designer.cs">
+      <DependentUpon>201503180132014_ModelsAsHashes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Instrument.cs" />
-    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\UserHash.cs" />
     <Compile Include="Models\Song.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -301,6 +309,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503152315259_Model_CSVs.resx">
       <DependentUpon>201503152315259_Model_CSVs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503180106079_AuthInitialization.resx">
+      <DependentUpon>201503180106079_AuthInitialization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503180132014_ModelsAsHashes.resx">
+      <DependentUpon>201503180132014_ModelsAsHashes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -52,7 +52,7 @@ namespace Pitch.Repository
 
         public int GetPlayersCount()
         {
-            return _dbContext.Players.Count<Models.Player>();
+            return _dbContext.Players.Count<Models.UserHash>();
         }
 
         public int GetInstrumentsCount()
@@ -65,27 +65,27 @@ namespace Pitch.Repository
             return _dbContext.Songs.Count<Models.Song>();
         }
 
-        public IEnumerable<Models.Player> GetAllPlayers()
+        public IEnumerable<Models.UserHash> GetAllPlayers()
         {
-            var query = from Player in _dbContext.Players select Player;
-            return query.ToList<Models.Player>();
+            var query = from UserHash in _dbContext.Players select UserHash;
+            return query.ToList<Models.UserHash>();
         }
 
-        public Models.Player GetPlayerById(int id)
+        public Models.UserHash GetPlayerById(int id)
         {
-            var query = from Player in _dbContext.Players
-                        where Player.ID == id
-                        select Player;
-            return query.First<Models.Player>();
+            var query = from UserHash in _dbContext.Players
+                        where UserHash.ID == id
+                        select UserHash;
+            return query.First<Models.UserHash>();
         }
 
-        public void AddPlayer(Models.Player P)
+        public void AddPlayer(Models.UserHash P)
         {
             _dbContext.Players.Add(P);
             _dbContext.SaveChanges();
         }
 
-        public void DeletePlayer(Models.Player P)
+        public void DeletePlayer(Models.UserHash P)
         {
             _dbContext.Players.Remove(P);
             _dbContext.SaveChanges();

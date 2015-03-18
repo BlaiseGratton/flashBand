@@ -28,9 +28,9 @@ namespace Pitch.Controllers
         [Authorize]
         [Route("api/Players")]
         [HttpGet]
-        public List<Player> GetPlayers()
+        public List<UserHash> GetPlayers()
         {
-            List<Player> players = new List<Player>();
+            List<UserHash> players = new List<UserHash>();
             players = repo.GetAllPlayers().ToList();
             return players;
             //return db.Players;
@@ -40,10 +40,10 @@ namespace Pitch.Controllers
         [Authorize]
         [Route("api/Players/{id}")]
         [HttpGet]
-        [ResponseType(typeof(Player))]
-        public Models.Player GetPlayer(int id)
+        [ResponseType(typeof(UserHash))]
+        public Models.UserHash GetPlayer(int id)
         {
-            Player player = repo.GetPlayerById(id);
+            UserHash player = repo.GetPlayerById(id);
             return player;
         }
         //public async Task<IHttpActionResult> GetPlayer(int id)
@@ -59,7 +59,7 @@ namespace Pitch.Controllers
 
         // PUT: api/Players/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutPlayer(int id, Player player)
+        public async Task<IHttpActionResult> PutPlayer(int id, UserHash player)
         {
             if (!ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace Pitch.Controllers
         [HttpPost]
         public HttpResponseMessage PostPlayer(string playerString)
         {
-            Player deserializedPlayer = JsonConvert.DeserializeObject<Player>(playerString);
+            /*Player deserializedPlayer = JsonConvert.DeserializeObject<UserHash>(playerString);
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
@@ -105,11 +105,12 @@ namespace Pitch.Controllers
             repo.AddPlayer(deserializedPlayer);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, deserializedPlayer);
             response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id=deserializedPlayer.ID }));
-            return response;
+            return response;*/
+            return Request.CreateResponse(HttpStatusCode.Created);
         }
 
         // DELETE: api/Players/5
-        [ResponseType(typeof(Player))]
+        [ResponseType(typeof(UserHash))]
         public async Task<IHttpActionResult> DeletePlayer(int id)
         {
             /*Player player = await db.Players.FindAsync(id);

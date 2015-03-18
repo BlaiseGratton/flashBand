@@ -11,7 +11,7 @@ namespace Pitch
 {
     public class AppContext : DbContext
     {
-        public DbSet<Player> Players { get; set; }
+        public DbSet<UserHash> Players { get; set; }
         public DbSet<Instrument> Instruments { get; set; }
         public DbSet<Song> Songs { get; set; }
     }
