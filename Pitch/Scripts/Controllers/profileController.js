@@ -9,13 +9,13 @@ angular.module('pitchApp')
             console.log($scope.user);
         };
 
-        vm.postInstrument = function () {
-            $scope.Instrument = new Instrument();
-            Instrument.save(vm.playerInfo, function () { });
+        $scope.postInstrument = function(){
+            Instrument.save($scope.instrument);
         };
 
-        vm.postSong = function () {
-            
+        $scope.postSong = function () {
+            $scope.song = new Song();
+            Song.save();
         };
 
     }]);

@@ -92,6 +92,19 @@ namespace Pitch.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        //POST: api/Instruments/
+        [Route("api/Instruments")]
+        [HttpPost]
+        public HttpResponseMessage PostInstrument(Instrument instrument)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            repo.AddInstrument(instrument);
+            return Request.CreateResponse(HttpStatusCode.Created);
+        }
+
         // POST: api/Players
         [Route("api/Players")]
         [HttpPost]

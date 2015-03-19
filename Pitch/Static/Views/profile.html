@@ -9,13 +9,13 @@
     </div>
 </div>
 <div>
-    <label>Username</label>
-    <input type="text" ng-model="profCtrl.playerInfo.userName"/>
+    <label>Instrument</label>
+    <input type="text" ng-model="instrument.name"/>{{instrument.name}}
     <label>Email</label>
     <input type="text" ng-model="profCtrl.playerInfo.email"/>
     <label>Instrument IDs</label>
     <input type="text" ng-model="profCtrl.playerInfo.instrumentIDs"/>
     <label>Song IDs</label>
     <input type="text" ng-model="profCtrl.playerInfo.songIDs"/>
-    <button ng-click="profCtrl.postPlayer(profCtrl.playerInfo)">Create Profile</button>
+    <button ng-click="postInstrument(instrument)">Create Profile</button>
 </div>

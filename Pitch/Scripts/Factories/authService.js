@@ -38,7 +38,6 @@ angular.module('pitchApp')
 			localStorageService.remove('authorizationData');
 			_authentication.isAuth = false;
 			_authentication.userName = "";
-			$rootScope.userId = null;
 		};
 		var _fillAuthData = function(){
 			var authData = localStorageService.get('authorizationData');
