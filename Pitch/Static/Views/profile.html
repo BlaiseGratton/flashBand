@@ -3,19 +3,13 @@
     <button ng-click="profCtrl.loadPlayer(profCtrl.playerIdInput)">Get Profile</button>
     <div>
         <h1>Profile Info</h1>
-        <p>{{user.userName}}</p>
-        <p>{{user.instrumentIDs}}</p>
-        <p>{{user.songIDs}}</p>
     </div>
 </div>
 <div>
     <label>Instrument</label>
     <input type="text" ng-model="instrument.name"/>{{instrument.name}}
-    <label>Email</label>
-    <input type="text" ng-model="profCtrl.playerInfo.email"/>
-    <label>Instrument IDs</label>
-    <input type="text" ng-model="profCtrl.playerInfo.instrumentIDs"/>
-    <label>Song IDs</label>
-    <input type="text" ng-model="profCtrl.playerInfo.songIDs"/>
-    <button ng-click="postInstrument(instrument)">Create Profile</button>
+    <button ng-click="postInstrument()">New Instrument</button>
+    <label>Song</label>
+    <input type="text" ng-model="song.title"/>
+    <button ng-click="postSong()">New Song</button>
 </div>

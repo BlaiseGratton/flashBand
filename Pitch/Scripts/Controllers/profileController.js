@@ -1,6 +1,6 @@
 ﻿'use strict';
 angular.module('pitchApp')
-    .controller('ProfileController', ['localStorageService', 'Instrument', 'Song', '$scope', function (localStorageService, Instrument, Song, $scope) {
+    .controller('ProfileController', ['localStorageService', 'Instruments', 'Songs', '$scope', function (localStorageService, Instruments, Songs, $scope) {
         var vm = this;
         vm.userId = localStorageService.get('authorizationData').userId;
 
@@ -10,12 +10,11 @@ angular.module('pitchApp')
         };
 
         $scope.postInstrument = function(){
-            Instrument.save($scope.instrument);
+            Instruments.save($scope.instrument);
         };
 
         $scope.postSong = function () {
-            $scope.song = new Song();
-            Song.save();
+            Songs.save($scope.song);
         };
 
     }]);

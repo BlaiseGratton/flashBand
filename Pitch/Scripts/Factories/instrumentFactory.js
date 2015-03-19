@@ -1,4 +1,4 @@
 ﻿angular.module('pitchApp')
-    .factory('Instrument', ['$resource', function ($resource) {
+    .factory('Instruments', ['$resource', function ($resource) {
         return $resource('/api/Instruments/:id');
     }]);

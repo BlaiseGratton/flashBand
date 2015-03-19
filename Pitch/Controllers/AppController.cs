@@ -19,7 +19,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Pitch.Controllers
 {
-    public class PlayersController : ApiController
+    public class AppController : ApiController
     {
         private AppRepository repo = new AppRepository();
         //private ApplicationDbContext db = new ApplicationDbContext();
@@ -105,6 +105,19 @@ namespace Pitch.Controllers
             return Request.CreateResponse(HttpStatusCode.Created);
         }
 
+        //POST: api/Songs/
+        [Route("api/Songs")]
+        [HttpPost]
+        public HttpResponseMessage PostSong(Song song)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            repo.AddSong(song);
+            return Request.CreateResponse(HttpStatusCode.Created);
+        }
+        
         // POST: api/Players
         [Route("api/Players")]
         [HttpPost]
