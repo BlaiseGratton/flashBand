@@ -43,8 +43,8 @@ namespace Pitch.Controllers
                 return BadRequest(ModelState);
             }
 
-            UserHash newHash = new UserHash(userModel.UserName); // added
-            _appRepo.AddUser(newHash); // added
+            Profile newProfile = new Profile(userModel.UserName); // added
+            _appRepo.AddUser(newProfile); // added
 
             IdentityResult result = await _repo.RegisterUser(userModel);
 

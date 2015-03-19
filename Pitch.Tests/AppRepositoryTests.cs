@@ -38,7 +38,7 @@ namespace Pitch.Tests
         {
             repo.Clear();
             Assert.AreEqual(0, repo.GetPlayersCount());
-            UserHash player = new UserHash("Blaise");
+            Profile player = new Profile("Blaise");
             Assert.AreEqual(1, repo.GetPlayersCount());
         }
     }

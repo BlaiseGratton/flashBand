@@ -213,9 +213,13 @@
     <Compile Include="Migrations\201503180132014_ModelsAsHashes.Designer.cs">
       <DependentUpon>201503180132014_ModelsAsHashes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503191617112_ICollections_on_profile_model.cs" />
+    <Compile Include="Migrations\201503191617112_ICollections_on_profile_model.Designer.cs">
+      <DependentUpon>201503191617112_ICollections_on_profile_model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Instrument.cs" />
-    <Compile Include="Models\UserHash.cs" />
+    <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Song.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -270,6 +274,7 @@
     <Content Include="Scripts\Factories\authService.js" />
     <Content Include="Scripts\Factories\instrumentFactory.js" />
     <Content Include="Scripts\Factories\songFactory.js" />
+    <Content Include="Scripts\Factories\userFactory.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\loading-bar.js" />
@@ -317,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503180132014_ModelsAsHashes.resx">
       <DependentUpon>201503180132014_ModelsAsHashes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503191617112_ICollections_on_profile_model.resx">
+      <DependentUpon>201503191617112_ICollections_on_profile_model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

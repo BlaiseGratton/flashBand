@@ -52,7 +52,7 @@ namespace Pitch.Repository
 
         public int GetPlayersCount()
         {
-            return _dbContext.Players.Count<Models.UserHash>();
+            return _dbContext.Players.Count<Models.Profile>();
         }
 
         public int GetInstrumentsCount()
@@ -65,10 +65,10 @@ namespace Pitch.Repository
             return _dbContext.Songs.Count<Models.Song>();
         }
 
-        public IEnumerable<Models.UserHash> GetAllPlayers()
+        public IEnumerable<Models.Profile> GetAllPlayers()
         {
             var query = from UserHash in _dbContext.Players select UserHash;
-            return query.ToList<Models.UserHash>();
+            return query.ToList<Models.Profile>();
         }
 
         public int GetPlayerIdByName(string userName)
@@ -76,24 +76,24 @@ namespace Pitch.Repository
             var query = from UserHash in _dbContext.Players
                         where UserHash.userName == userName 
                         select UserHash;
-            return query.First<Models.UserHash>().ID;
+            return query.First<Models.Profile>().ID;
         }
 
-        public Models.UserHash GetPlayerById(int id)
+        public Models.Profile GetUserById(int id)
         {
             var query = from UserHash in _dbContext.Players
                         where UserHash.ID == id
                         select UserHash;
-            return query.First<Models.UserHash>();
+            return query.First<Models.Profile>();
         }
 
-        public void AddUser(Models.UserHash U)
+        public void AddUser(Models.Profile U)
         {
             _dbContext.Players.Add(U);
             _dbContext.SaveChanges();
         }
 
-        public void DeletePlayer(Models.UserHash P)
+        public void DeletePlayer(Models.Profile P)
         {
             _dbContext.Players.Remove(P);
             _dbContext.SaveChanges();
@@ -139,10 +139,16 @@ namespace Pitch.Repository
             return query.First<Models.Song>();
         }
 
-        public void AddSong(Models.Song S)
+        public void CreateSong(Models.Song S)
         {
             _dbContext.Songs.Add(S);
             _dbContext.SaveChanges();
+        }
+
+        public void AddSongToUser(int profileId, Song song)
+        {
+            Profile profile = GetUserById(profileId);
+            profile.Songs.Add(song);
         }
 
         public void DeleteSong(Models.Song S)

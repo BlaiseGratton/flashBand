@@ -5,15 +5,17 @@ using System.Web;
 
 namespace Pitch.Models
 {
-    public class UserHash
+    public class Profile
     {
         public int ID { get; set; }
         public string userName { get; set; }
+        public virtual ICollection<Models.Instrument> Instruments { get; set; }
+        public virtual ICollection<Models.Song> Songs { get; set; }
 
-        public UserHash() { }
+        public Profile() { }
 
 
-        public UserHash(string userName)
+        public Profile(string userName)
         {
             this.userName = userName;
         }

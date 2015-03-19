@@ -28,23 +28,23 @@ namespace Pitch.Controllers
         [Authorize]
         [Route("api/Players")]
         [HttpGet]
-        public List<UserHash> GetPlayers()
+        public List<Profile> GetPlayers()
         {
-            List<UserHash> players = new List<UserHash>();
+            List<Profile> players = new List<Profile>();
             players = repo.GetAllPlayers().ToList();
             return players;
             //return db.Players;
         }
 
-        // GET: api/Players/5
+        // GET: api/Users/5
         [Authorize]
-        [Route("api/Players/{id}")]
+        [Route("api/Users/{id}")]
         [HttpGet]
-        [ResponseType(typeof(UserHash))]
-        public Models.UserHash GetPlayer(int id)
+        [ResponseType(typeof(Profile))]
+        public Models.Profile GetUser(int id)
         {
-            UserHash player = repo.GetPlayerById(id);
-            return player;
+            Profile user = repo.GetUserById(id);
+            return user;
         }
         //public async Task<IHttpActionResult> GetPlayer(int id)
         //{
@@ -59,7 +59,7 @@ namespace Pitch.Controllers
 
         // PUT: api/Players/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutPlayer(int id, UserHash player)
+        public async Task<IHttpActionResult> PutPlayer(int id, Profile player)
         {
             if (!ModelState.IsValid)
             {
@@ -114,7 +114,20 @@ namespace Pitch.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-            repo.AddSong(song);
+            repo.CreateSong(song);
+            return Request.CreateResponse(HttpStatusCode.Created);
+        }
+
+        //POST: api/Users/{id}/{song}
+        [Route("api/Users/{id}/{song}")]
+        [Authorize]
+        public HttpResponseMessage AddSongToProfile(int profileId, Song song)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            repo.AddSongToUser(profileId, song);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
         
@@ -136,7 +149,7 @@ namespace Pitch.Controllers
         }
 
         // DELETE: api/Players/5
-        [ResponseType(typeof(UserHash))]
+        [ResponseType(typeof(Profile))]
         public async Task<IHttpActionResult> DeletePlayer(int id)
         {
             /*Player player = await db.Players.FindAsync(id);

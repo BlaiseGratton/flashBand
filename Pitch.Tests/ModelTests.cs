@@ -10,7 +10,7 @@ namespace Pitch.Tests
         [TestMethod]
         public void TestPlayerConstructor()
         {
-            UserHash newPlayer = new UserHash("CoolGuy07");
+            Profile newPlayer = new Profile("CoolGuy07");
             Assert.AreEqual("CoolGuy07", newPlayer.userName);
         }
 
