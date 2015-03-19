@@ -1,6 +1,6 @@
 ﻿'use strict';
 angular.module('pitchApp')
-    .controller('IndexController', ['$scope', '$location', 'authService', function ($scope, $location, authService) {
+    .controller('IndexController', ['$rootScope', '$scope', '$location', 'authService', function($rootScope, $scope, $location, authService) {
         var vm = this;
 
         $scope.logOut = function () {

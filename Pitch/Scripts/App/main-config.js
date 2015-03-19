@@ -1,6 +1,7 @@
 ﻿'use strict';
+var app = angular.module('pitchApp');
 angular.module('pitchApp')
-    .config(function ($routeProvider) {
+    .config(function($routeProvider){
         $routeProvider
         .when('/prof', {
             templateUrl: '/Static/Views/profile.html',
@@ -28,7 +29,18 @@ angular.module('pitchApp')
             //controllerAs: 'homeCtrl'
         })
         .when('/', {
-            templateUrl: '/Static/Views/home.html'
+            templateUrl: '/Static/Views/home.html',
+            controller: 'IndexController',
+            /*resolve: {
+                app: function(accessFactory, $location){
+                    if (accessFactory.checkLogin() === false){
+                        accessFactory.getUserId($rootScope.userName);
+                        $location.path('/home');
+                    } else {
+                        $location.path('/login');
+                    }
+                }
+            }*/
         })
         .otherwise({ redirectTo: '/home' });
     })
