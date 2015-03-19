@@ -217,6 +217,10 @@
     <Compile Include="Migrations\201503191617112_ICollections_on_profile_model.Designer.cs">
       <DependentUpon>201503191617112_ICollections_on_profile_model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503192033328_Many_to_many_attempt.cs" />
+    <Compile Include="Migrations\201503192033328_Many_to_many_attempt.Designer.cs">
+      <DependentUpon>201503192033328_Many_to_many_attempt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Instrument.cs" />
     <Compile Include="Models\Profile.cs" />
@@ -325,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503191617112_ICollections_on_profile_model.resx">
       <DependentUpon>201503191617112_ICollections_on_profile_model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503192033328_Many_to_many_attempt.resx">
+      <DependentUpon>201503192033328_Many_to_many_attempt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

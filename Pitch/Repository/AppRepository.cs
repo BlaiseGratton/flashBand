@@ -145,10 +145,12 @@ namespace Pitch.Repository
             _dbContext.SaveChanges();
         }
 
-        public void AddSongToUser(int profileId, Song song)
+        public void AddSongToUser(int profileId, int songId)
         {
             Profile profile = GetUserById(profileId);
+            Song song = GetSongById(songId);
             profile.Songs.Add(song);
+            _dbContext.SaveChanges();
         }
 
         public void DeleteSong(Models.Song S)

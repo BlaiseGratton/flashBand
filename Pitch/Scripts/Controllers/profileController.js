@@ -7,11 +7,21 @@ angular.module('pitchApp')
         $scope.user = Users.get({ id: vm.userId });
 
         $scope.postInstrument = function(){
-            Instruments.save($scope.instrument);
+            Instruments.save($scope.newInstrument);
+        };
+
+        $scope.songs = Songs.query();
+
+        $scope.addSongToUser = function(songId){
+            $scope.user.userId = vm.userId;
+            $scope.user.songId = songId;
+            $scope.user.songs = "songs";
+            console.log($scope.user.songs);
+            $scope.user.$addSong();
         };
 
         $scope.postSong = function () {
-            Songs.save($scope.song);
+            Songs.save($scope.newSong);
         };
 
     }]);

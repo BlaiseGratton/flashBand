@@ -24,15 +24,15 @@ namespace Pitch.Controllers
         private AppRepository repo = new AppRepository();
         //private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/Players
+        // GET: api/Songs
         [Authorize]
-        [Route("api/Players")]
+        [Route("api/Songs")]
         [HttpGet]
-        public List<Profile> GetPlayers()
+        public List<Models.Song> GetAllSongs()
         {
-            List<Profile> players = new List<Profile>();
-            players = repo.GetAllPlayers().ToList();
-            return players;
+            List<Models.Song> songs = new List<Models.Song>();
+            songs = repo.GetAllSongs().ToList();
+            return songs;
             //return db.Players;
         }
 
@@ -118,16 +118,16 @@ namespace Pitch.Controllers
             return Request.CreateResponse(HttpStatusCode.Created);
         }
 
-        //POST: api/Users/{id}/{song}
-        [Route("api/Users/{id}/{song}")]
+        //POST: api/Users/2/songs/13
+        [Route("api/Users/{userId}/songs/{songId}")]
         [Authorize]
-        public HttpResponseMessage AddSongToProfile(int profileId, Song song)
+        public HttpResponseMessage AddSongToProfile(int userId, int songId)
         {
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-            repo.AddSongToUser(profileId, song);
+            repo.AddSongToUser(userId, songId);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
         

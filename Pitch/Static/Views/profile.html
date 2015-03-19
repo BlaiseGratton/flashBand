@@ -8,9 +8,12 @@
 </div>
 <div>
     <label>Instrument</label>
-    <input type="text" ng-model="instrument.name"/>{{instrument.name}}
+    <input type="text" ng-model="newInstrument.name"/>{{instrument.name}}
     <button ng-click="postInstrument()">New Instrument</button>
     <label>Song</label>
-    <input type="text" ng-model="song.title"/>
+    <input type="text" ng-model="newSong.title"/>
     <button ng-click="postSong()">New Song</button>
 </div>
+<ul>
+    <li ng-repeat="song in songs"><a href="" ng-click="addSongToUser(song.id)">{{song.title}}{{song.id}}</a></li>
+</ul>
