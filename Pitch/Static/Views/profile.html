@@ -15,5 +15,8 @@
     <button ng-click="postSong()">New Song</button>
 </div>
 <ul>
-    <li ng-repeat="song in songs"><a href="" ng-click="addSongToUser(song.id)">{{song.title}}{{song.id}}</a></li>
+    <li ng-repeat="song in songs"><a href="" ng-click="addSongToUser(song.id)">{{song.title}}</a></li>
+</ul>
+<ul>
+    <li ng-repeat="instrument in instruments"><a href="" ng-click="addInstrumentToUser(instrument.id)">{{instrument.name}}</a></li>
 </ul>

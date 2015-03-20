@@ -36,6 +36,18 @@ namespace Pitch.Controllers
             //return db.Players;
         }
 
+        // GET: api/Instruments
+        [Authorize]
+        [Route("api/Instruments")]
+        [HttpGet]
+        public IEnumerable<Models.Instrument> GetAllInstruments()
+        {
+            List<Models.Instrument> instrumentsCollection = new List<Models.Instrument>();
+            instrumentsCollection = repo.GetAllInstruments().ToList();
+            return instrumentsCollection;
+            //return db.Players;
+        }
+
         // GET: api/Users/5
         [Authorize]
         [Route("api/Users/{id}")]

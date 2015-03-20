@@ -12,12 +12,21 @@ angular.module('pitchApp')
 
         $scope.songs = Songs.query();
 
+        $scope.instruments = Instruments.query();
+
         $scope.addSongToUser = function(songId){
             $scope.user.userId = vm.userId;
             $scope.user.itemId = songId;
             $scope.user.collection = "songs";
             $scope.user.$addSong();
         };
+
+        $scope.addInstrumentToUser = function(instrumentId){
+            $scope.user.userId = vm.userId;
+            $scope.user.itemId = instrumentId;
+            $scope.user.collection = "instruments";
+            $scope.user.$addInstrument();
+        }
 
         $scope.postSong = function () {
             Songs.save($scope.newSong);
