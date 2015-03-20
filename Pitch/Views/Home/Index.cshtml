@@ -19,8 +19,7 @@
             </div>
             <div class="collapse navbar-collapse" data-collapse="!navbarExpanded" id="collapse-target">
                 <ul class="nav navbar-nav navbar-right">
-                    <li data-ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
-                    <li data-ng-hide="!authentication.isAuth"><a href="#/prof">My Profile</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#/prof">{{authentication.userName}}</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="/" data-ng-click="logOut()">Logout</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Sign Up</a></li>

@@ -21,7 +21,7 @@ namespace Pitch.Controllers
 {
     public class AppController : ApiController
     {
-        private AppRepository repo = new AppRepository();
+        private AppRepository _repo = new AppRepository();
         //private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Songs
@@ -31,7 +31,7 @@ namespace Pitch.Controllers
         public IEnumerable<Models.Song> GetAllSongs()
         {
             List<Models.Song> songsCollection = new List<Models.Song>();
-            songsCollection = repo.GetAllSongs().ToList();
+            songsCollection = _repo.GetAllSongs().ToList();
             return songsCollection;
             //return db.Players;
         }
@@ -43,7 +43,7 @@ namespace Pitch.Controllers
         public IEnumerable<Models.Instrument> GetAllInstruments()
         {
             List<Models.Instrument> instrumentsCollection = new List<Models.Instrument>();
-            instrumentsCollection = repo.GetAllInstruments().ToList();
+            instrumentsCollection = _repo.GetAllInstruments().ToList();
             return instrumentsCollection;
             //return db.Players;
         }
@@ -55,7 +55,7 @@ namespace Pitch.Controllers
         [ResponseType(typeof(Profile))]
         public Models.Profile GetUser(int id)
         {
-            Profile user = repo.GetUserById(id);
+            Profile user = _repo.GetUserById(id);
             return user;
         }
         //public async Task<IHttpActionResult> GetPlayer(int id)
@@ -113,7 +113,7 @@ namespace Pitch.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-            repo.AddInstrument(instrument);
+            _repo.AddInstrument(instrument);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
 
@@ -126,7 +126,7 @@ namespace Pitch.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-            repo.CreateSong(song);
+            _repo.CreateSong(song);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
 
@@ -139,7 +139,7 @@ namespace Pitch.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-            repo.AddSongToUser(userId, songId);
+            _repo.AddSongToUser(userId, songId);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
 
@@ -152,7 +152,7 @@ namespace Pitch.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-            repo.AddInstrumentToUser(userId, instrumentId);
+            _repo.AddInstrumentToUser(userId, instrumentId);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
         

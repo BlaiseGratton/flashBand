@@ -12,14 +12,34 @@ namespace Pitch
 {
     public class AppContext : DbContext
     {
-        public DbSet<Profile> Players { get; set; }
-        public DbSet<Instrument> Instruments { get; set; }
-        public DbSet<Song> Songs { get; set; }
+        //public AppContext()
+        //    : base("name=AppContext")
+        //{
+        //    this.Configuration.LazyLoadingEnabled = false;
+        //}
 
-        public AppContext() : base() { }
+        public AppContext(string connectionString)
+            : base(connectionString)
+        {
+            this.Configuration.LazyLoadingEnabled = false;
+        }
+
         public AppContext(DbConnection connection) : base(connection, true)
         {
             this.Configuration.LazyLoadingEnabled = false;
+        }
+
+        public AppContext() { }
+        
+        public DbSet<Profile> Players { get; set; }
+        public DbSet<Instrument> Instruments { get; set; }
+        public DbSet<Song> Songs { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Profile>().ToTable("Profile");
+            modelBuilder.Entity<Instrument>().ToTable("Instrument");
+            modelBuilder.Entity<Song>().ToTable("Song");
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

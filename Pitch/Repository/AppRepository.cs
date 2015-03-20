@@ -11,7 +11,7 @@ using System.Web;
 
 namespace Pitch.Repository
 {
-    public class AppRepository
+    public class AppRepository : IAppRepository
     {
         private AppContext _dbContext;
 
