@@ -28,6 +28,11 @@ namespace Pitch.Repository
             return _dbContext;
         }
 
+        public AppRepository(AppContext context)
+        {
+            _dbContext = context;
+        }
+
         public void SaveChanges()
         {
             _dbContext.SaveChanges();

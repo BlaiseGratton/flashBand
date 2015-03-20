@@ -14,9 +14,9 @@
     <input type="text" ng-model="newSong.title"/>
     <button ng-click="postSong()">New Song</button>
 </div>
-<ul>
+<ul class="col-xs-6">
     <li ng-repeat="song in songs"><a href="" ng-click="addSongToUser(song.id)">{{song.title}}</a></li>
 </ul>
-<ul>
+<ul class="col-xs-6">
     <li ng-repeat="instrument in instruments"><a href="" ng-click="addInstrumentToUser(instrument.id)">{{instrument.name}}</a></li>
 </ul>

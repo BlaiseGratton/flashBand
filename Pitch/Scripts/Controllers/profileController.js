@@ -10,6 +10,10 @@ angular.module('pitchApp')
             Instruments.save($scope.newInstrument);
         };
 
+        $scope.postSong = function () {
+            Songs.save($scope.newSong);
+        };
+
         $scope.songs = Songs.query();
 
         $scope.instruments = Instruments.query();
@@ -26,10 +30,8 @@ angular.module('pitchApp')
             $scope.user.itemId = instrumentId;
             $scope.user.collection = "instruments";
             $scope.user.$addInstrument();
-        }
-
-        $scope.postSong = function () {
-            Songs.save($scope.newSong);
         };
+
+        
 
     }]);
