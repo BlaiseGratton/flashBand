@@ -14,9 +14,8 @@ angular.module('pitchApp')
 
         $scope.addSongToUser = function(songId){
             $scope.user.userId = vm.userId;
-            $scope.user.songId = songId;
-            $scope.user.songs = "songs";
-            console.log($scope.user.songs);
+            $scope.user.itemId = songId;
+            $scope.user.collection = "songs";
             $scope.user.$addSong();
         };
 

@@ -125,7 +125,7 @@ namespace Pitch.Repository
             _dbContext.SaveChanges();
         }
 
-        public IEnumerable<Models.Song> GetAllSongs()
+        public List<Models.Song> GetAllSongs()
         {
             var query = from Song in _dbContext.Songs select Song;
             return query.ToList<Models.Song>();
@@ -150,6 +150,14 @@ namespace Pitch.Repository
             Profile profile = GetUserById(profileId);
             Song song = GetSongById(songId);
             profile.Songs.Add(song);
+            _dbContext.SaveChanges();
+        }
+
+        public void AddInstrumentToUser(int profileId, int instrumentId)
+        {
+            Profile profile = GetUserById(profileId);
+            Instrument instrument = GetInstrumentById(instrumentId);
+            profile.Instruments.Add(instrument);
             _dbContext.SaveChanges();
         }
 

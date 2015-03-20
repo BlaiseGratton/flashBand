@@ -28,11 +28,11 @@ namespace Pitch.Controllers
         [Authorize]
         [Route("api/Songs")]
         [HttpGet]
-        public List<Models.Song> GetAllSongs()
+        public IEnumerable<Models.Song> GetAllSongs()
         {
-            List<Models.Song> songs = new List<Models.Song>();
-            songs = repo.GetAllSongs().ToList();
-            return songs;
+            List<Models.Song> songsCollection = new List<Models.Song>();
+            songsCollection = repo.GetAllSongs().ToList();
+            return songsCollection;
             //return db.Players;
         }
 
@@ -128,6 +128,19 @@ namespace Pitch.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
             repo.AddSongToUser(userId, songId);
+            return Request.CreateResponse(HttpStatusCode.Created);
+        }
+
+        //POST: api/Users/2/instruments/13
+        [Route("api/Users/{userId}/instruments/{instrumentId}")]
+        [Authorize]
+        public HttpResponseMessage AddInstrumentToProfile(int userId, int instrumentId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            repo.AddInstrumentToUser(userId, instrumentId);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
         
