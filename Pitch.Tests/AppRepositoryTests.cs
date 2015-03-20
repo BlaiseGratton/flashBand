@@ -38,9 +38,10 @@ namespace Pitch.Tests
         [TestMethod]
         public void TestAddPlayer()
         {
-            //_repo.Clear();
+            _repo.Clear();
             Assert.AreEqual(0, _repo.GetPlayersCount());
-            Profile player = new Profile("Blaise");
+            Profile profile = new Profile("Blaise");
+            _repo.AddUser(profile);
             Assert.AreEqual(1, _repo.GetPlayersCount());
         }
     }
