@@ -237,6 +237,7 @@
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Repository\AppRepository.cs" />
     <Compile Include="Repository\IAppRepository.cs" />
+    <Compile Include="Models\SongProfiles.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

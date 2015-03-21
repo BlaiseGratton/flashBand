@@ -27,12 +27,17 @@ namespace Pitch.Tests
             using(var context = new AppContext(connection))
             {
                 context.Database.CreateIfNotExists();
-                context.Players.Add(new Profile("Blaise"));
+                Profile blaise = new Profile("Blaise");
+                Song song1 = new Song("Song1");
+                Song song2 = new Song("Song2");
+                Song song3 = new Song("Song3");
+                context.Songs.Add(song1);
+                context.Songs.Add(song2);
+                context.Songs.Add(song3);
+                context.Players.Add(blaise);
                 context.SaveChanges();
             }
             _repo = new AppRepository(new AppContext(connection));
-            //repo = new AppRepository();
-            //repo.Clear();
         }
 
         [TestMethod]
@@ -42,6 +47,36 @@ namespace Pitch.Tests
             Assert.AreEqual(0, _repo.GetPlayersCount());
             Profile profile = new Profile("Blaise");
             _repo.AddUser(profile);
+            Assert.AreEqual(1, _repo.GetPlayersCount());
+        }
+
+        [TestMethod]
+        public void TestAddSongToPlayer()
+        {
+            Profile colby = new Profile("Colby");
+            _repo.AddUser(colby);
+            Assert.AreEqual(2, colby.ID);
+            Song song = new Song("song");
+            _repo.CreateSong(song);
+            Assert.AreEqual(4, song.ID);
+            colby.Songs.Add(song);
+            _repo.SaveChanges();
+            Assert.AreEqual("song", colby.Songs.First<Models.Song>().title);
+        }
+
+        [TestMethod]
+        public void TestAddingSongsToPlayer()
+        {
+            Profile adam = new Profile("Adam");
+            int profId = adam.ID;
+
+        }
+
+        [TestMethod]
+        public void TestRetrievingId()
+        {
+            int profileId = _repo.GetPlayerIdByName("Blaise");
+            Assert.AreEqual(1, profileId);
             Assert.AreEqual(1, _repo.GetPlayersCount());
         }
     }

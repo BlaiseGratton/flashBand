@@ -158,6 +158,17 @@ namespace Pitch.Repository
             _dbContext.SaveChanges();
         }
 
+        public void AddSongsToUser(int profileId, List<int> songIds)
+        {
+            Profile profile = GetUserById(profileId);
+            foreach (int songId in songIds)
+            {
+                Song song = GetSongById(songId);
+                profile.Songs.Add(song);
+            }
+            _dbContext.SaveChanges();
+        }
+
         public void AddInstrumentToUser(int profileId, int instrumentId)
         {
             Profile profile = GetUserById(profileId);
@@ -170,6 +181,14 @@ namespace Pitch.Repository
         {
             _dbContext.Songs.Remove(S);
             _dbContext.SaveChanges();
+        }
+
+        public int GetSongIdByName(string songTitle)
+        {
+            var query = from Song in _dbContext.Songs
+                        where Song.title == songTitle 
+                        select Song;
+            return query.First<Models.Song>().ID;
         }
     }
 }

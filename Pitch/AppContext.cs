@@ -39,6 +39,7 @@ namespace Pitch
             modelBuilder.Entity<Profile>().ToTable("Profile");
             modelBuilder.Entity<Instrument>().ToTable("Instrument");
             modelBuilder.Entity<Song>().ToTable("Song");
+            modelBuilder.Entity<SongProfiles>().ToTable("SongProfiles");
             base.OnModelCreating(modelBuilder);
         }
     }
