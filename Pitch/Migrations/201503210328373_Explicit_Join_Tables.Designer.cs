@@ -7,18 +7,18 @@ namespace Pitch.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class Many_to_many_attempt : IMigrationMetadata
+    public sealed partial class Explicit_Join_Tables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Many_to_many_attempt));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Explicit_Join_Tables));
         
         string IMigrationMetadata.Id
         {
-            get { return "201503192033328_Many_to_many_attempt"; }
+            get { return "201503210328373_Explicit_Join_Tables"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target

@@ -21,6 +21,8 @@ namespace Pitch.Repository
             _dbContext.Players.Load();
             _dbContext.Instruments.Load();
             _dbContext.Songs.Load();
+            _dbContext.UserSongs.Load();
+            _dbContext.UserInstruments.Load();
         }
 
         public AppContext Context()
@@ -152,9 +154,8 @@ namespace Pitch.Repository
 
         public void AddSongToUser(int profileId, int songId)
         {
-            Profile profile = GetUserById(profileId);
-            Song song = GetSongById(songId);
-            profile.Songs.Add(song);
+            SongProfile userSong = new SongProfile(profileId, songId);
+            _dbContext.UserSongs.Add(userSong);
             _dbContext.SaveChanges();
         }
 
@@ -163,17 +164,16 @@ namespace Pitch.Repository
             Profile profile = GetUserById(profileId);
             foreach (int songId in songIds)
             {
-                Song song = GetSongById(songId);
-                profile.Songs.Add(song);
+                SongProfile userSong = new SongProfile(profileId, songId);
+                _dbContext.UserSongs.Add(userSong);
             }
             _dbContext.SaveChanges();
         }
 
         public void AddInstrumentToUser(int profileId, int instrumentId)
         {
-            Profile profile = GetUserById(profileId);
-            Instrument instrument = GetInstrumentById(instrumentId);
-            profile.Instruments.Add(instrument);
+            InstrumentProfile profInst = new InstrumentProfile(profileId, instrumentId);
+            _dbContext.UserInstruments.Add(profInst);
             _dbContext.SaveChanges();
         }
 
@@ -189,6 +189,19 @@ namespace Pitch.Repository
                         where Song.title == songTitle 
                         select Song;
             return query.First<Models.Song>().ID;
+        }
+
+        public List<Song> GetUserSongs(int userId)
+        {
+            IEnumerable<int> songIDs = from UserSong in _dbContext.UserSongs
+                                       where UserSong.ProfileID == userId
+                                       select UserSong.SongId;
+            List<Models.Song> songs = new List<Models.Song>();
+            foreach (int songId in songIDs)
+            {
+                songs.Add(GetSongById(songId));
+            }
+            return songs.ToList();
         }
     }
 }

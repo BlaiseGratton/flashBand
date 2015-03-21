@@ -9,8 +9,6 @@ namespace Pitch.Models
     {
         public int ID { get; set; }
         public string userName { get; set; }
-        public virtual ICollection<Models.Instrument> Instruments { get; set; }
-        public virtual ICollection<Models.Song> Songs { get; set; }
 
         public Profile() { }
 

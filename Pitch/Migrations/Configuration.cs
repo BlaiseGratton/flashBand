@@ -9,7 +9,7 @@ namespace Pitch.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Pitch.AppContext context)

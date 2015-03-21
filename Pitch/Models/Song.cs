@@ -10,8 +10,6 @@ namespace Pitch.Models
     {
         public int ID { get; set; }
         public string title { get; set; }
-        [JsonIgnore]
-        public virtual ICollection<Models.Profile> Profiles { get; set; }
 
         public Song() { }
 

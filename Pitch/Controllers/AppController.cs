@@ -22,7 +22,6 @@ namespace Pitch.Controllers
     public class AppController : ApiController
     {
         private AppRepository _repo = new AppRepository();
-        //private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Songs
         [Authorize]
@@ -154,6 +153,16 @@ namespace Pitch.Controllers
             }
             _repo.AddInstrumentToUser(userId, instrumentId);
             return Request.CreateResponse(HttpStatusCode.Created);
+        }
+
+        // GET: api/Users/3/Songs
+        [Route("api/Users/{userId}/songs")]
+        [Authorize]
+        [ResponseType(typeof(Models.Song))]
+        public List<Models.Song> GetUsersInstruments(int userId)
+        {
+            List<Models.Song> userSongs = _repo.GetUserSongs(userId);
+            return userSongs;
         }
         
         // POST: api/Players

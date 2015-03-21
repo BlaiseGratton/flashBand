@@ -224,20 +224,21 @@
     <Compile Include="Migrations\201503191617112_ICollections_on_profile_model.Designer.cs">
       <DependentUpon>201503191617112_ICollections_on_profile_model.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201503192033328_Many_to_many_attempt.cs" />
-    <Compile Include="Migrations\201503192033328_Many_to_many_attempt.Designer.cs">
-      <DependentUpon>201503192033328_Many_to_many_attempt.cs</DependentUpon>
+    <Compile Include="Migrations\201503210328373_Explicit_Join_Tables.cs" />
+    <Compile Include="Migrations\201503210328373_Explicit_Join_Tables.Designer.cs">
+      <DependentUpon>201503210328373_Explicit_Join_Tables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Instrument.cs" />
     <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\InstrumentProfile.cs" />
+    <Compile Include="Models\SongProfile.cs" />
     <Compile Include="Models\Song.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Repository\AppRepository.cs" />
     <Compile Include="Repository\IAppRepository.cs" />
-    <Compile Include="Models\SongProfiles.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -339,8 +340,8 @@
     <EmbeddedResource Include="Migrations\201503191617112_ICollections_on_profile_model.resx">
       <DependentUpon>201503191617112_ICollections_on_profile_model.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503192033328_Many_to_many_attempt.resx">
-      <DependentUpon>201503192033328_Many_to_many_attempt.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201503210328373_Explicit_Join_Tables.resx">
+      <DependentUpon>201503210328373_Explicit_Join_Tables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

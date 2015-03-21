@@ -34,13 +34,14 @@ namespace Pitch
         public DbSet<Profile> Players { get; set; }
         public DbSet<Instrument> Instruments { get; set; }
         public DbSet<Song> Songs { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Profile>().ToTable("Profile");
-            modelBuilder.Entity<Instrument>().ToTable("Instrument");
-            modelBuilder.Entity<Song>().ToTable("Song");
-            modelBuilder.Entity<SongProfiles>().ToTable("SongProfiles");
-            base.OnModelCreating(modelBuilder);
-        }
+        public DbSet<SongProfile> UserSongs { get; set; }
+        public DbSet<InstrumentProfile> UserInstruments { get; set; }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Profile>().ToTable("Profile");
+        //    modelBuilder.Entity<Instrument>().ToTable("Instrument");
+        //    modelBuilder.Entity<Song>().ToTable("Song");
+        //    base.OnModelCreating(modelBuilder);
+        //}
     }
 }

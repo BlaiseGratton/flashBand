@@ -59,17 +59,21 @@ namespace Pitch.Tests
             Song song = new Song("song");
             _repo.CreateSong(song);
             Assert.AreEqual(4, song.ID);
-            colby.Songs.Add(song);
-            _repo.SaveChanges();
-            Assert.AreEqual("song", colby.Songs.First<Models.Song>().title);
+            _repo.AddSongToUser(2, 4);
+            List<Models.Song> colbysSongs = _repo.GetUserSongs(colby.ID);
+            Song savedSong = colbysSongs.First<Models.Song>();
+            Assert.AreEqual("song", savedSong.title);
         }
 
         [TestMethod]
         public void TestAddingSongsToPlayer()
         {
             Profile adam = new Profile("Adam");
-            int profId = adam.ID;
-
+            _repo.AddUser(adam);
+            List<int> songIds = new List<int> { 1, 2, 3 };
+            _repo.AddSongsToUser(adam.ID, songIds);
+            List<Models.Song> adamsSongs = _repo.GetUserSongs(adam.ID);
+            Assert.AreEqual(3, adamsSongs.Count());
         }
 
         [TestMethod]
