@@ -53,6 +53,10 @@ namespace Pitch.Repository
             _dbContext.Instruments.RemoveRange(b);
             var c = this.GetAllSongs();
             _dbContext.Songs.RemoveRange(c);
+            var d = this.GetAllSongProfiles();
+            _dbContext.UserSongs.RemoveRange(d);
+            var e = this.GetAllInstrumentProfiles();
+            _dbContext.UserInstruments.RemoveRange(e);
             _dbContext.SaveChanges();
 
         }
@@ -136,6 +140,18 @@ namespace Pitch.Repository
         {
             var query = from Song in _dbContext.Songs select Song;
             return query.ToList<Models.Song>();
+        }
+
+        public List<Models.SongProfile> GetAllSongProfiles()
+        {
+            var query = from UserSong in _dbContext.UserSongs select UserSong;
+            return query.ToList<Models.SongProfile>();
+        }
+
+        public List<Models.InstrumentProfile> GetAllInstrumentProfiles()
+        {
+            var query = from UserInstrument in _dbContext.UserInstruments select UserInstrument;
+            return query.ToList<Models.InstrumentProfile>();
         }
 
         public Models.Song GetSongById(int id)

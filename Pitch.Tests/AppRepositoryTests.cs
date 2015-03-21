@@ -28,13 +28,61 @@ namespace Pitch.Tests
             {
                 context.Database.CreateIfNotExists();
                 Profile blaise = new Profile("Blaise");
+                Profile adam = new Profile("Adam");
+                Profile colby = new Profile("Colby");
+                Profile leon = new Profile("Leon");
+                Profile jackie = new Profile("Jackie");
+                Profile spencer = new Profile("Spencer");
+                Profile gerald = new Profile("Gerald");
+                Profile alex = new Profile("Alex");
                 Song song1 = new Song("Song1");
                 Song song2 = new Song("Song2");
                 Song song3 = new Song("Song3");
+                Song song4 = new Song("Song4");
+                Song song5 = new Song("Song5");
+                Song song6 = new Song("Song6");
+                Song song7 = new Song("Song7");
+                Song song8 = new Song("Song8");
+                Song song9 = new Song("Song9");
+                Song song10 = new Song("Song10");
+                Song song11 = new Song("Song11");
+                Song song12 = new Song("Song12");
+                Song song13 = new Song("Song13");
+                Song song14 = new Song("Song14");
+                Song song15 = new Song("Song15");
+                Song song16 = new Song("Song16");
+                Song song17 = new Song("Song17");
+                Song song18 = new Song("Song18");
+                Song song19 = new Song("Song19");
+                Song song20 = new Song("Song20");
                 context.Songs.Add(song1);
                 context.Songs.Add(song2);
                 context.Songs.Add(song3);
+                context.Songs.Add(song4);
+                context.Songs.Add(song5);
+                context.Songs.Add(song6);
+                context.Songs.Add(song7);
+                context.Songs.Add(song8);
+                context.Songs.Add(song9);
+                context.Songs.Add(song10);
+                context.Songs.Add(song11);
+                context.Songs.Add(song12);
+                context.Songs.Add(song13);
+                context.Songs.Add(song14);
+                context.Songs.Add(song15);
+                context.Songs.Add(song16);
+                context.Songs.Add(song17);
+                context.Songs.Add(song18);
+                context.Songs.Add(song19);
+                context.Songs.Add(song20);
                 context.Players.Add(blaise);
+                context.Players.Add(colby);
+                context.Players.Add(adam);
+                context.Players.Add(jackie);
+                context.Players.Add(leon);
+                context.Players.Add(spencer);
+                context.Players.Add(gerald);
+                context.Players.Add(alex);
                 context.SaveChanges();
             }
             _repo = new AppRepository(new AppContext(connection));
@@ -53,22 +101,20 @@ namespace Pitch.Tests
         [TestMethod]
         public void TestAddSongToPlayer()
         {
-            Profile colby = new Profile("Colby");
-            _repo.AddUser(colby);
-            Assert.AreEqual(2, colby.ID);
+            Profile testuser = new Profile("testUser");
+            _repo.AddUser(testuser);
             Song song = new Song("song");
             _repo.CreateSong(song);
-            Assert.AreEqual(4, song.ID);
-            _repo.AddSongToUser(2, 4);
-            List<Models.Song> colbysSongs = _repo.GetUserSongs(colby.ID);
-            Song savedSong = colbysSongs.First<Models.Song>();
+            _repo.AddSongToUser(testuser.ID, song.ID);
+            List<Models.Song> usersSongs = _repo.GetUserSongs(testuser.ID);
+            Song savedSong = usersSongs.First<Models.Song>();
             Assert.AreEqual("song", savedSong.title);
         }
 
         [TestMethod]
         public void TestAddingSongsToPlayer()
         {
-            Profile adam = new Profile("Adam");
+            Profile adam = new Profile("adam");
             _repo.AddUser(adam);
             List<int> songIds = new List<int> { 1, 2, 3 };
             _repo.AddSongsToUser(adam.ID, songIds);
@@ -79,9 +125,12 @@ namespace Pitch.Tests
         [TestMethod]
         public void TestRetrievingId()
         {
-            int profileId = _repo.GetPlayerIdByName("Blaise");
-            Assert.AreEqual(1, profileId);
-            Assert.AreEqual(1, _repo.GetPlayersCount());
+            Profile dave = new Profile("Dave");
+            _repo.AddUser(dave);
+            int profileId = _repo.GetPlayerIdByName("Dave");
+            Assert.AreEqual(9, profileId);
+            Assert.AreEqual(9, _repo.GetPlayersCount());
+            Assert.AreEqual(1, _repo.GetPlayerIdByName("Blaise"));
         }
     }
 }
