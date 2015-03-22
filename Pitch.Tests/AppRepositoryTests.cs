@@ -119,7 +119,11 @@ namespace Pitch.Tests
             _repo.AddSongsToUser(2, new List<int> { 11, 12, 13,14, 15, 16, 17, 18, 19, 20 });
             _repo.AddSongsToUser(3, new List<int> { 1, 2, 3, 4, 5, 16, 17, 18, 19, 20 });
             _repo.AddSongsToUser(4, new List<int> { 6, 7, 8, 9, 10, 11, 12, 13, 14, 15});
-            
+            CollectionAssert.Equals(new List<int> { 1 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(1), _repo.GetSongPlayers(1)));
+            CollectionAssert.Equals(new List<int> { 1, 2, 3 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(2), _repo.GetSongPlayers(2)));
+            CollectionAssert.Equals(new List<int> { 1, 2, 4 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(3), _repo.GetSongPlayers(10)));
+            CollectionAssert.Equals(new List<int> { 1 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(4), _repo.GetSongPlayers(8)));
+            CollectionAssert.Equals(new List<int> { 1, 3 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(2), _repo.GetSongPlayers(12)));
         }
 
 
