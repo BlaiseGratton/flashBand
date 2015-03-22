@@ -16,6 +16,7 @@ using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using Pitch.Repository;
 using Newtonsoft.Json.Linq;
+using System.Dynamic;
 
 namespace Pitch.Controllers
 {
@@ -67,6 +68,23 @@ namespace Pitch.Controllers
 
         //    return Ok(player);
         //}
+ 
+        // GET: api/Sets/{instruments}/{songs}
+        [Authorize]
+        [Route("api/Sets/{instrumentIDs}/{songIDs}")]
+        [HttpGet]
+        public List<object> GetInstrumentPlayersForSongSet(int[] instrumentIDs, int[] songIDs)
+        {
+            List<object> results = new List<object>();
+            foreach (int instrumentId in instrumentIDs)
+            {
+                dynamic playersOfSongs = new ExpandoObject();
+                playersOfSongs.instrument = _repo.GetInstrumentById(instrumentId).name;
+                playersOfSongs.players = _repo.GetInstrumentPlayersOfSetOfSongs(instrumentId, songIDs.ToList<int>());
+                results.Add(playersOfSongs);
+            }
+            return results;
+        }
 
         // PUT: api/Players/5
         [ResponseType(typeof(void))]
