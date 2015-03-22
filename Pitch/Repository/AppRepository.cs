@@ -209,9 +209,9 @@ namespace Pitch.Repository
 
         public List<Song> GetUserSongs(int userId)
         {
-            IEnumerable<int> songIDs = from UserSong in _dbContext.UserSongs
-                                       where UserSong.ProfileID == userId
-                                       select UserSong.SongId;
+            IEnumerable<int> songIDs = from SongProfile in _dbContext.UserSongs
+                                       where SongProfile.ProfileID == userId
+                                       select SongProfile.SongId;
             List<Models.Song> songs = new List<Models.Song>();
             foreach (int songId in songIDs)
             {
@@ -222,17 +222,17 @@ namespace Pitch.Repository
 
         public List<int> GetSongPlayers(int songId)
         {
-            var query = from UserSong in _dbContext.UserSongs
-                        where UserSong.SongId == songId
-                        select UserSong.ID;
+            var query = from SongProfile in _dbContext.UserSongs
+                        where SongProfile.SongId == songId
+                        select SongProfile.ProfileID;
             return query.ToList<int>();
         }
 
         public List<int> GetInstrumentPlayers(int instId)
         {
-            var query = from UserInstruments in _dbContext.UserInstruments
-                        where UserInstruments.InstrumentId == instId
-                        select UserInstruments.ID;
+            var query = from InstrumentProfile in _dbContext.UserInstruments
+                        where InstrumentProfile.InstrumentId == instId
+                        select InstrumentProfile.ProfileID;
             return query.ToList<int>();
         }
 
@@ -240,6 +240,19 @@ namespace Pitch.Repository
         {
             List<int> matchSet = instrumentPlayers.Intersect(songPlayers).ToList<int>();
             return matchSet;
+        }
+
+        public List<int> GetInstrumentPlayersOfSetOfSongs(int instId, List<int> songIDs)
+        {
+            List<int> instPlayers = GetInstrumentPlayers(instId);
+            List<int> playerSet = GetSongPlayers(songIDs[0]);
+            foreach (int songID in songIDs)
+            {
+                List<int> songPlayers = GetSongPlayers(songID);
+                MatchInstrumentPlayersToSongPlayers(instPlayers, songPlayers);
+                playerSet = playerSet.Intersect(songPlayers).ToList<int>();
+            }
+            return playerSet;
         }
     }
 }

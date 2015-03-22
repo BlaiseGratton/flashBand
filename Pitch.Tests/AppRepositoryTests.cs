@@ -77,12 +77,12 @@ namespace Pitch.Tests
             List<int> list4 = new List<int> { 1, 2 };
             List<int> list5 = new List<int> { 1, 2, 3 };
             List<int> list6 = new List<int> { 2 };
-            CollectionAssert.Equals(list1, _repo.GetSongPlayers(1));
-            CollectionAssert.Equals(list2, _repo.GetSongPlayers(2));
-            CollectionAssert.Equals(list3, _repo.GetSongPlayers(3));
-            CollectionAssert.Equals(list4, _repo.GetSongPlayers(4));
-            CollectionAssert.Equals(list5, _repo.GetSongPlayers(5));
-            CollectionAssert.Equals(list6, _repo.GetSongPlayers(6));
+            CollectionAssert.AreEquivalent(list1, _repo.GetSongPlayers(1));
+            CollectionAssert.AreEquivalent(list2, _repo.GetSongPlayers(2));
+            CollectionAssert.AreEquivalent(list3, _repo.GetSongPlayers(3));
+            CollectionAssert.AreEquivalent(list4, _repo.GetSongPlayers(4));
+            CollectionAssert.AreEquivalent(list5, _repo.GetSongPlayers(5));
+            CollectionAssert.AreEquivalent(list6, _repo.GetSongPlayers(6));
         }
 
         [TestMethod]
@@ -96,10 +96,10 @@ namespace Pitch.Tests
             _repo.AddInstrumentToUser(6, 2);
             _repo.AddInstrumentToUser(6, 3);
             _repo.AddInstrumentToUser(3, 1);
-            CollectionAssert.Equals(new List<int> { 1, 3 }, _repo.GetInstrumentPlayers(1));            
-            CollectionAssert.Equals(new List<int> { 2, 6 }, _repo.GetInstrumentPlayers(2));            
-            CollectionAssert.Equals(new List<int> { 1, 2, 6 }, _repo.GetInstrumentPlayers(3));            
-            CollectionAssert.Equals(new List<int> { 3 }, _repo.GetInstrumentPlayers(4));            
+            CollectionAssert.AreEquivalent(new List<int> { 1, 3 }, _repo.GetInstrumentPlayers(1));            
+            CollectionAssert.AreEquivalent(new List<int> { 2, 6 }, _repo.GetInstrumentPlayers(2));            
+            CollectionAssert.AreEquivalent(new List<int> { 1, 2, 6 }, _repo.GetInstrumentPlayers(3));            
+            CollectionAssert.AreEquivalent(new List<int> { 3 }, _repo.GetInstrumentPlayers(4));            
         }
 
         [TestMethod]
@@ -119,14 +119,31 @@ namespace Pitch.Tests
             _repo.AddSongsToUser(2, new List<int> { 11, 12, 13,14, 15, 16, 17, 18, 19, 20 });
             _repo.AddSongsToUser(3, new List<int> { 1, 2, 3, 4, 5, 16, 17, 18, 19, 20 });
             _repo.AddSongsToUser(4, new List<int> { 6, 7, 8, 9, 10, 11, 12, 13, 14, 15});
-            CollectionAssert.Equals(new List<int> { 1 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(1), _repo.GetSongPlayers(1)));
-            CollectionAssert.Equals(new List<int> { 1, 2, 3 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(2), _repo.GetSongPlayers(2)));
-            CollectionAssert.Equals(new List<int> { 1, 2, 4 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(3), _repo.GetSongPlayers(10)));
-            CollectionAssert.Equals(new List<int> { 1 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(4), _repo.GetSongPlayers(8)));
-            CollectionAssert.Equals(new List<int> { 1, 3 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(2), _repo.GetSongPlayers(12)));
+            CollectionAssert.AreEquivalent(new List<int> { 1 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(1), _repo.GetSongPlayers(1)));
+            CollectionAssert.AreEquivalent(new List<int> { 1, 2, 3 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(2), _repo.GetSongPlayers(2)));
+            CollectionAssert.AreEquivalent(new List<int> { 1, 2, 4 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(3), _repo.GetSongPlayers(10)));
+            CollectionAssert.AreEquivalent(new List<int> { 1 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(4), _repo.GetSongPlayers(8)));
+            CollectionAssert.AreEquivalent(new List<int> { 1, 2 }, _repo.MatchInstrumentPlayersToSongPlayers(_repo.GetInstrumentPlayers(2), _repo.GetSongPlayers(12)));
         }
 
-
+        [TestMethod]
+        public void TestMatchingOneInstrumentPlayerToManySongs()
+        {
+            _repo.AddInstrumentToUser(1, 1);
+            _repo.AddInstrumentToUser(1, 2);
+            _repo.AddInstrumentToUser(2, 2);
+            _repo.AddInstrumentToUser(2, 3);
+            _repo.AddInstrumentToUser(3, 1);
+            _repo.AddInstrumentToUser(3, 3);
+            _repo.AddSongsToUser(1, new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+            _repo.AddSongsToUser(2, new List<int> { 1, 2, 3, 4, 5, 6 });
+            _repo.AddSongsToUser(3, new List<int> { 4, 5, 6, 7, 8, 9, 10 });
+            CollectionAssert.AreEquivalent(new List<int> { 1 }, _repo.GetInstrumentPlayersOfSetOfSongs(1, new List<int> { 1, 2, 3, 4, 5 }));
+            CollectionAssert.AreEquivalent(new List<int> { 1, 3 }, _repo.GetInstrumentPlayersOfSetOfSongs(1, new List<int> { 4, 5 }));
+            CollectionAssert.AreEquivalent(new List<int> { 1, 3 }, _repo.GetInstrumentPlayersOfSetOfSongs(2, new List<int> { 4, 5, 6 }));
+            CollectionAssert.AreEquivalent(new List<int> { 1, 3 }, _repo.GetInstrumentPlayersOfSetOfSongs(1, new List<int> { 4, 5 }));
+            CollectionAssert.AreEquivalent(new List<int> { 1, 3 }, _repo.GetInstrumentPlayersOfSetOfSongs(1, new List<int> { 4, 5 }));
+        }
 
         [TestInitialize]
         public void SetUpTest()
@@ -202,6 +219,12 @@ namespace Pitch.Tests
                 context.SaveChanges();
             }
             _repo = new AppRepository(new AppContext(connection));
+        }
+
+        [TestCleanup]
+        public void ClearRepo()
+        {
+            _repo.Clear();
         }
     }
 }
