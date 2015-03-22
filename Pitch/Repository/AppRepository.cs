@@ -219,5 +219,13 @@ namespace Pitch.Repository
             }
             return songs.ToList();
         }
+
+        public List<int> GetSongPlayers(int songId)
+        {
+            var query = from UserSong in _dbContext.UserSongs
+                        where UserSong.SongId == songId
+                        select UserSong.ID;
+            return query.ToList<int>();
+        }
     }
 }

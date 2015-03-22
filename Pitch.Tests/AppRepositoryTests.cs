@@ -20,6 +20,71 @@ namespace Pitch.Tests
     {
         private AppRepository _repo;
 
+        [TestMethod]
+        public void TestAddPlayer()
+        {
+            _repo.Clear();
+            Assert.AreEqual(0, _repo.GetPlayersCount());
+            Profile profile = new Profile("Blaise");
+            _repo.AddUser(profile);
+            Assert.AreEqual(1, _repo.GetPlayersCount());
+        }
+
+        [TestMethod]
+        public void TestAddSongToPlayer()
+        {
+            Profile testuser = new Profile("testUser");
+            _repo.AddUser(testuser);
+            Song song = new Song("song");
+            _repo.CreateSong(song);
+            _repo.AddSongToUser(testuser.ID, song.ID);
+            List<Models.Song> usersSongs = _repo.GetUserSongs(testuser.ID);
+            Song savedSong = usersSongs.First<Models.Song>();
+            Assert.AreEqual("song", savedSong.title);
+        }
+
+        [TestMethod]
+        public void TestAddingSongsToPlayer()
+        {
+            Profile adam = new Profile("adam");
+            _repo.AddUser(adam);
+            List<int> songIds = new List<int> { 1, 2, 3 };
+            _repo.AddSongsToUser(adam.ID, songIds);
+            List<Models.Song> adamsSongs = _repo.GetUserSongs(adam.ID);
+            Assert.AreEqual(3, adamsSongs.Count());
+        }
+
+        [TestMethod]
+        public void TestRetrievingId()
+        {
+            Profile dave = new Profile("Dave");
+            _repo.AddUser(dave);
+            int profileId = _repo.GetPlayerIdByName("Dave");
+            Assert.AreEqual(9, profileId);
+            Assert.AreEqual(9, _repo.GetPlayersCount());
+            Assert.AreEqual(1, _repo.GetPlayerIdByName("Blaise"));
+        }
+
+        [TestMethod]
+        public void TestRetrievingSongPlayers()
+        {
+            _repo.AddSongsToUser(1, new List<int> { 1, 2, 3, 4, 5 });
+            _repo.AddSongsToUser(2, new List<int> { 2, 3, 4, 5, 6 });
+            _repo.AddSongsToUser(3, new List<int> { 1, 3, 5 });
+            List<int> list1 = new List<int> { 1, 3 };
+            List<int> list2 = new List<int> { 1, 2 };
+            List<int> list3 = new List<int> { 1, 2, 3 };
+            List<int> list4 = new List<int> { 1, 2 };
+            List<int> list5 = new List<int> { 1, 2, 3 };
+            List<int> list6 = new List<int> { 2 };
+            CollectionAssert.Equals(list1, _repo.GetSongPlayers(1));
+            CollectionAssert.Equals(list2, _repo.GetSongPlayers(2));
+            CollectionAssert.Equals(list3, _repo.GetSongPlayers(3));
+            CollectionAssert.Equals(list4, _repo.GetSongPlayers(4));
+            CollectionAssert.Equals(list5, _repo.GetSongPlayers(5));
+            CollectionAssert.Equals(list6, _repo.GetSongPlayers(6));
+        }
+
         [TestInitialize]
         public void SetUpTest()
         {
@@ -83,54 +148,13 @@ namespace Pitch.Tests
                 context.Players.Add(spencer);
                 context.Players.Add(gerald);
                 context.Players.Add(alex);
+                context.Instruments.Add(piano);
+                context.Instruments.Add(guitar);
+                context.Instruments.Add(bass);
+                context.Instruments.Add(drums);
                 context.SaveChanges();
             }
             _repo = new AppRepository(new AppContext(connection));
-        }
-
-        [TestMethod]
-        public void TestAddPlayer()
-        {
-            _repo.Clear();
-            Assert.AreEqual(0, _repo.GetPlayersCount());
-            Profile profile = new Profile("Blaise");
-            _repo.AddUser(profile);
-            Assert.AreEqual(1, _repo.GetPlayersCount());
-        }
-
-        [TestMethod]
-        public void TestAddSongToPlayer()
-        {
-            Profile testuser = new Profile("testUser");
-            _repo.AddUser(testuser);
-            Song song = new Song("song");
-            _repo.CreateSong(song);
-            _repo.AddSongToUser(testuser.ID, song.ID);
-            List<Models.Song> usersSongs = _repo.GetUserSongs(testuser.ID);
-            Song savedSong = usersSongs.First<Models.Song>();
-            Assert.AreEqual("song", savedSong.title);
-        }
-
-        [TestMethod]
-        public void TestAddingSongsToPlayer()
-        {
-            Profile adam = new Profile("adam");
-            _repo.AddUser(adam);
-            List<int> songIds = new List<int> { 1, 2, 3 };
-            _repo.AddSongsToUser(adam.ID, songIds);
-            List<Models.Song> adamsSongs = _repo.GetUserSongs(adam.ID);
-            Assert.AreEqual(3, adamsSongs.Count());
-        }
-
-        [TestMethod]
-        public void TestRetrievingId()
-        {
-            Profile dave = new Profile("Dave");
-            _repo.AddUser(dave);
-            int profileId = _repo.GetPlayerIdByName("Dave");
-            Assert.AreEqual(9, profileId);
-            Assert.AreEqual(9, _repo.GetPlayersCount());
-            Assert.AreEqual(1, _repo.GetPlayerIdByName("Blaise"));
         }
     }
 }
