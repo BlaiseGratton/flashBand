@@ -227,5 +227,19 @@ namespace Pitch.Repository
                         select UserSong.ID;
             return query.ToList<int>();
         }
+
+        public List<int> GetInstrumentPlayers(int instId)
+        {
+            var query = from UserInstruments in _dbContext.UserInstruments
+                        where UserInstruments.InstrumentId == instId
+                        select UserInstruments.ID;
+            return query.ToList<int>();
+        }
+
+        public List<int> MatchInstrumentPlayersToSongPlayers(List<int> instrumentPlayers, List<int> songPlayers)
+        {
+            List<int> matchSet = instrumentPlayers.Intersect(songPlayers).ToList<int>();
+            return matchSet;
+        }
     }
 }

@@ -85,6 +85,45 @@ namespace Pitch.Tests
             CollectionAssert.Equals(list6, _repo.GetSongPlayers(6));
         }
 
+        [TestMethod]
+        public void TestRetrievingInstrumentPlayers()
+        {
+            _repo.AddInstrumentToUser(1, 1);
+            _repo.AddInstrumentToUser(1, 3);
+            _repo.AddInstrumentToUser(2, 2);
+            _repo.AddInstrumentToUser(2, 3);
+            _repo.AddInstrumentToUser(3, 4);
+            _repo.AddInstrumentToUser(6, 2);
+            _repo.AddInstrumentToUser(6, 3);
+            _repo.AddInstrumentToUser(3, 1);
+            CollectionAssert.Equals(new List<int> { 1, 3 }, _repo.GetInstrumentPlayers(1));            
+            CollectionAssert.Equals(new List<int> { 2, 6 }, _repo.GetInstrumentPlayers(2));            
+            CollectionAssert.Equals(new List<int> { 1, 2, 6 }, _repo.GetInstrumentPlayers(3));            
+            CollectionAssert.Equals(new List<int> { 3 }, _repo.GetInstrumentPlayers(4));            
+        }
+
+        [TestMethod]
+        public void TestGettingMatchSetOfPlayersAndInstruments()
+        {
+            _repo.AddInstrumentToUser(1, 1);
+            _repo.AddInstrumentToUser(1, 2);
+            _repo.AddInstrumentToUser(1, 3);
+            _repo.AddInstrumentToUser(1, 4);
+            _repo.AddInstrumentToUser(2, 2);
+            _repo.AddInstrumentToUser(2, 3);
+            _repo.AddInstrumentToUser(3, 2);
+            _repo.AddInstrumentToUser(4, 3);
+            _repo.AddInstrumentToUser(5, 4);
+            _repo.AddSongsToUser(1, new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 });
+            _repo.AddSongsToUser(2, new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+            _repo.AddSongsToUser(2, new List<int> { 11, 12, 13,14, 15, 16, 17, 18, 19, 20 });
+            _repo.AddSongsToUser(3, new List<int> { 1, 2, 3, 4, 5, 16, 17, 18, 19, 20 });
+            _repo.AddSongsToUser(4, new List<int> { 6, 7, 8, 9, 10, 11, 12, 13, 14, 15});
+            
+        }
+
+
+
         [TestInitialize]
         public void SetUpTest()
         {
@@ -100,6 +139,10 @@ namespace Pitch.Tests
                 Profile spencer = new Profile("Spencer");
                 Profile gerald = new Profile("Gerald");
                 Profile alex = new Profile("Alex");
+                Instrument piano = new Instrument("Piano");
+                Instrument guitar = new Instrument("Guitar");
+                Instrument bass = new Instrument("Bass");
+                Instrument drums = new Instrument("Drums");
                 Song song1 = new Song("Song1");
                 Song song2 = new Song("Song2");
                 Song song3 = new Song("Song3");
