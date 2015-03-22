@@ -249,10 +249,9 @@ namespace Pitch.Repository
             foreach (int songID in songIDs)
             {
                 List<int> songPlayers = GetSongPlayers(songID);
-                MatchInstrumentPlayersToSongPlayers(instPlayers, songPlayers);
-                playerSet = playerSet.Intersect(songPlayers).ToList<int>();
+                playerSet = songPlayers.Intersect(playerSet).ToList<int>();
             }
-            return playerSet;
+            return MatchInstrumentPlayersToSongPlayers(instPlayers, playerSet);
         }
     }
 }
