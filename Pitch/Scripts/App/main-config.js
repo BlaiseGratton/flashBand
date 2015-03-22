@@ -28,6 +28,10 @@ angular.module('pitchApp')
             controller: 'HomeController'
             //controllerAs: 'homeCtrl'
         })
+        .when('/flashes', {
+            templateUrl: '/Static/Views/flashes.html',
+            controller: 'FlashesController'
+        })
         .when('/', {
             templateUrl: '/Static/Views/home.html',
             controller: 'IndexController',

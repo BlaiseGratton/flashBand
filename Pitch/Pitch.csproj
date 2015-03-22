@@ -276,6 +276,7 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-resource.min.js.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\Controllers\flashesController.js" />
     <Content Include="Scripts\Factories\accessFactory.js" />
     <Content Include="Scripts\Factories\authInterceptorService.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -286,6 +287,7 @@
     <Content Include="Scripts\Controllers\profileController.js" />
     <Content Include="Scripts\Controllers\signupController.js" />
     <Content Include="Scripts\Factories\authService.js" />
+    <Content Include="Scripts\Factories\flashesFactory.js" />
     <Content Include="Scripts\Factories\instrumentFactory.js" />
     <Content Include="Scripts\Factories\songFactory.js" />
     <Content Include="Scripts\Factories\userFactory.js" />
@@ -296,6 +298,7 @@
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\App\main.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Static\Views\flashes.html" />
     <Content Include="Static\Views\home.html" />
     <Content Include="Static\Views\login.html" />
     <Content Include="Static\Views\profile.html" />

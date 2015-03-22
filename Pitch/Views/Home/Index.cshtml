@@ -20,6 +20,7 @@
             <div class="collapse navbar-collapse" data-collapse="!navbarExpanded" id="collapse-target">
                 <ul class="nav navbar-nav navbar-right">
                     <li data-ng-hide="!authentication.isAuth"><a href="#/prof">{{authentication.userName}}</a></li>
+                    <li data-ng-hide="!authentication.isAuth"><a href="#/flashes">Find Flashes</a></li>
                     <li data-ng-hide="!authentication.isAuth"><a href="/" data-ng-click="logOut()">Logout</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/login">Login</a></li>
                     <li data-ng-hide="authentication.isAuth"> <a href="#/signup">Sign Up</a></li>
@@ -43,10 +44,12 @@
     <script src="~/Scripts/Controllers/loginController.js"></script>
     <script src="~/Scripts/Controllers/profileController.js"></script>
     <script src="~/Scripts/Controllers/signupController.js"></script>
+    <script src="~/Scripts/Controllers/flashesController.js"></script>
     <script src="~/Scripts/Factories/authInterceptorService.js"></script>
     <script src="~/Scripts/Factories/authService.js"></script>
     <script src="~/Scripts/Factories/instrumentFactory.js"></script>
     <script src="~/Scripts/Factories/songFactory.js"></script>
+    <script src="~/Scripts/Factories/flashesFactory.js"></script>
     <script src="~/Scripts/Factories/accessFactory.js"></script>
     <script src="~/Scripts/Factories/userFactory.js"></script>
 </body>

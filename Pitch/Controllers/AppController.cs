@@ -69,9 +69,9 @@ namespace Pitch.Controllers
         //    return Ok(player);
         //}
  
-        // GET: api/Sets/{instruments}/{songs}
+        // GET: api/Flashes/{instruments}/{songs}
         [Authorize]
-        [Route("api/Sets/{instrumentIDs}/{songIDs}")]
+        [Route("api/Flashes/{instrumentIDs}/{songIDs}")]
         [HttpGet]
         public List<object> GetInstrumentPlayersForSongSet(int[] instrumentIDs, int[] songIDs)
         {
