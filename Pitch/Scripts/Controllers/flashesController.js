@@ -5,12 +5,16 @@ angular.module('pitchApp')
 
         vm.userId = localStorageService.get('authorizationData').userId;
 
+        $scope.request = {};
+
         $scope.request.instrumentIDs = [];
 
         $scope.request.songIDs = [];
 
         $scope.getFlashes = function () {
-            $http.get('api/Flashes/' + $scope.request)
+            console.log($scope.request);
+            //$http({ url: 'api/Flashes/' + $scope.request, params: { request: $scope.request }, dataType: 'json', method: 'GET', data: '', headers: {"Content-Type": "application/json"}})
+            $http.post('api/Flashes/', $scope.request)
                                 .success(function (response) {
                                     $scope.flashes = response;
                                 })
@@ -24,10 +28,10 @@ angular.module('pitchApp')
         $scope.allInstruments = Instruments.query();
 
         $scope.addSongIdToRequest = function(songId){
-            $scope.songIDs.push(songId);
+            $scope.request.songIDs.push(songId);
         }
 
         $scope.addInstIdToRequest = function(instId){
-            $scope.instrumentIDs.push(instId);
+            $scope.request.instrumentIDs.push(instId);
         }
     }])

@@ -68,19 +68,32 @@ namespace Pitch.Controllers
 
         //    return Ok(player);
         //}
- 
-        // GET: api/Flashes/{instruments}/{songs}
+
+
+        // POST: api/Flashes/{request}
         [Authorize]
-        [Route("api/Flashes/{instrumentIDs}/{songIDs}")]
-        [HttpGet]
-        public List<object> GetInstrumentPlayersForSongSet(int[] instrumentIDs, int[] songIDs)
+        [Route("api/Flashes")]
+        [HttpPost]
+        public List<object> GetInstrumentPlayersForSongSet(JObject request)
         {
             List<object> results = new List<object>();
-            foreach (int instrumentId in instrumentIDs)
+            dynamic req = request;
+            List<int> convertedInstIDs = new List<int>();
+            foreach (int ID in (JArray)req.instrumentIDs)
+            {
+                convertedInstIDs.Add(ID);
+            }
+            List<int> convertedSongIDs = new List<int>();
+            foreach (int ID in (JArray)req.songIDs)
+            {
+                convertedSongIDs.Add(ID);
+            }
+
+            foreach (int instrumentId in convertedInstIDs)
             {
                 dynamic playersOfSongs = new ExpandoObject();
                 playersOfSongs.instrument = _repo.GetInstrumentById(instrumentId).name;
-                playersOfSongs.players = _repo.GetInstrumentPlayersOfSetOfSongs(instrumentId, songIDs.ToList<int>());
+                playersOfSongs.players = _repo.GetInstrumentPlayersOfSetOfSongs(instrumentId, convertedSongIDs);
                 results.Add(playersOfSongs);
             }
             return results;

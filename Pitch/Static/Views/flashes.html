@@ -2,10 +2,10 @@
     <p>Give me players who can play these songs: </p>
     <button ng-click="getFlashes()">Get Flashes</button>
     <ul class="col-xs-6">
-        <li ng-repeat="id in songIDs">{{id}}</li>
+        <li ng-repeat="id in request.songIDs">{{id}}</li>
     </ul>
     <ul class="col-xs-6">
-        <li ng-repeat="id in instrumentIDs">{{id}}</li>
+        <li ng-repeat="id in request.instrumentIDs">{{id}}</li>
     </ul>
     <ul class="col-xs-6">
         <li ng-repeat="song in allSongs"><a ng-click="addSongIdToRequest(song.id)">{{song.title}}</a></li>
