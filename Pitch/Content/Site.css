@@ -26,3 +26,7 @@ textarea {
 li {
     list-style: none;
 }
+
+.modal-backdrop {
+    height: 100%;
+}

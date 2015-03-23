@@ -4,7 +4,7 @@ angular.module('pitchApp')
         $scope.open = function(size){
             var modalInstance = $modal.open({
                 templateUrl: '../../Static/Views/_instrument-modal.html',
-                controller: '',
+                controller: 'InstrumentController',
                 size: size
             });
             modalInstance.result.then(function (selectedItem) {
