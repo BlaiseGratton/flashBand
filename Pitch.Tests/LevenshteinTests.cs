@@ -22,10 +22,33 @@ namespace Pitch.Tests
         private AppRepository _repo;
 
         [TestMethod]
-        public void TestReturningLevenshteinNumbersFromStaticClass()
+        public void TestReturningLevenshteinNumbersFromMethod()
         {
             int first = LevenshteinDistance.Compute("and", "ant");
-            Assert.AreEqual(first, 1);
+            Assert.AreEqual(1, first);
+            int second = LevenshteinDistance.Compute("California", "Californication");
+            Assert.AreEqual(5, second);
+        }
+
+        [TestMethod]
+        public void TestCapitalizationDoesMatter()
+        {
+            int first = LevenshteinDistance.Compute("and", "And");
+            Assert.AreEqual(1, first);
+        }
+
+        [TestMethod]
+        public void TestReturningQueryFromInput()
+        {
+            List<Models.Song> songMatches = _repo.fuzzySearchSongs("song");
+            Assert.AreEqual(20, songMatches.Count());
+        }
+
+        [TestMethod]
+        public void TestLimitOfPermutations()
+        {
+            List<Models.Song> songMatches = _repo.fuzzySearchSongs("sin");
+            Assert.AreEqual(9, songMatches.Count());
         }
 
         [TestInitialize]
