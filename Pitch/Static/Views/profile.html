@@ -20,10 +20,24 @@
         </ul>
     </div>
     <ul class="col-xs-6">
-        <li ng-repeat="instrument in instruments"><a href="" ng-click="addInstrumentToUser(instrument.id)">{{instrument.name}}</a></li>
+        <li ng-repeat="instrument in ninstruments"><a href="" ng-click="addInstrumentToUser(instrument.id)">{{instrument.name}}</a></li>
     </ul>
 </div>
-<h2>Your Songs</h2>
-<ul class="col-md-6">
-    <li ng-repeat="song in userSongs">{{song.title}}</li>
-</ul>
+<div class="col-sm-6">
+    <div>
+        <h2 class="col-sm-8">Your Instruments</h2>
+        <a class="col-sm-4" ng-controller="InstrumentModalController" ng-click="open()" href="">Edit</a>
+    </div>
+    <ul class="col-xs-12">
+        <li ng-repeat="instrument in instruments">{{instrument.name}}</li>
+    </ul>
+</div>
+<div class="col-sm-6">
+    <div>
+        <h2 class="col-sm-8">Your Songs</h2>
+        <a class="col-sm-4" ng-controller="SongModalController" ng-click="open()" href="">Edit</a>
+    </div>
+    <ul class="col-xs-12">
+        <li ng-repeat="song in songs">{{song.title}}</li>
+    </ul>
+</div>

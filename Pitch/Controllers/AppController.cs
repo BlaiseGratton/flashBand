@@ -197,15 +197,25 @@ namespace Pitch.Controllers
         }
 
         // GET: api/Users/3/Songs
-        [Route("api/Users/{userId}/songs")]
+        [Route("api/Users/{userId}/Songs")]
         [Authorize]
         [ResponseType(typeof(Models.Song))]
-        public List<Models.Song> GetUsersInstruments(int userId)
+        public List<Models.Song> GetUsersSongs(int userId)
         {
             List<Models.Song> userSongs = _repo.GetUserSongs(userId);
             return userSongs;
         }
         
+        // GET: api/Users/3/Songs
+        [Route("api/Users/{userId}/Instruments")]
+        [Authorize]
+        [ResponseType(typeof(Models.Instrument))]
+        public List<Models.Instrument> GetUsersInstruments(int userId)
+        {
+            List<Models.Instrument> userInstruments = _repo.GetUserInstruments(userId);
+            return userInstruments;
+        }
+
         // POST: api/Players
         [Route("api/Players")]
         [HttpPost]

@@ -279,6 +279,10 @@
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\checklist-model.js" />
     <Content Include="Scripts\Controllers\flashesController.js" />
+    <Content Include="Scripts\Controllers\instrumentController.js" />
+    <Content Include="Scripts\Controllers\instrumentModalController.js" />
+    <Content Include="Scripts\Controllers\songController.js" />
+    <Content Include="Scripts\Controllers\songModalController.js" />
     <Content Include="Scripts\Factories\accessFactory.js" />
     <Content Include="Scripts\Factories\authInterceptorService.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -305,6 +309,8 @@
     <Content Include="Static\Views\login.html" />
     <Content Include="Static\Views\profile.html" />
     <Content Include="Static\Views\signup.html" />
+    <Content Include="Static\Views\_instrument-modal.html" />
+    <Content Include="Static\Views\_song-modal.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

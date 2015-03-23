@@ -220,6 +220,19 @@ namespace Pitch.Repository
             }
             return songs.ToList();
         }
+        
+        public List<Instrument> GetUserInstruments(int userId)
+        {
+            IEnumerable<int> instrumentIDs = from InstrumentProfile in _dbContext.UserInstruments
+                                       where InstrumentProfile.ProfileID == userId
+                                       select InstrumentProfile.InstrumentId;
+            List<Models.Instrument> instruments = new List<Models.Instrument>();
+            foreach (int instrumentId in instrumentIDs)
+            {
+                instruments.Add(GetInstrumentById(instrumentId));
+            }
+            return instruments.ToList();
+        }
 
         public List<int> GetSongPlayers(int songId)
         {

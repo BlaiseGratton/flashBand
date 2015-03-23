@@ -29,12 +29,17 @@ angular.module('pitchApp')
                 };
             };
 
-        $http.get("api/Users/" + vm.userId + "/songs")
+        $http.get("api/Users/" + vm.userId + "/Songs")
             .success(function (data) {
-                $scope.userSongs = data;
+                $scope.songs = data;
             })
             .error(function (err) { console.log(err.message); });
 
+        $http.get("api/Users/" + vm.userId + "/Instruments")
+            .success(function (data) {
+                $scope.instruments = data;
+            })
+            .error(function (err) { console.log(err.message); })
         $scope.addSongToUser = function(songId){
             $scope.user.userId = vm.userId;
             $scope.user.itemId = songId;
