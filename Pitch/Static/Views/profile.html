@@ -1,9 +1,6 @@
 ﻿<div>
-    <input type="text" ng-model="profCtrl.playerIdInput"/>
-    <button ng-click="profCtrl.loadPlayer(profCtrl.playerIdInput)">Get Profile</button>
     <div>
-        <h1>Profile Info</h1>
-        {{user.userName}}
+        <h1>{{user.userName}}'s Profile</h1>
     </div>
 </div>
 <div>
@@ -14,17 +11,19 @@
     <input type="text" ng-model="newSong.title"/>
     <button ng-click="postSong()">New Song</button>
 </div>
-<h2>Search Songs</h2>
-<input type="text" ng-model="searchString"/>
-<button ng-click="searchSongs()">Search</button>
-<ul class="col-xs-6">
-    <li ng-repeat="song in searchSongResults"><a href="" ng-click="addSongToUser(song.id)">{{song.title}}</a></li>
-</ul>
-<h2>All Instruments</h2>
-<ul class="col-xs-6">
-    <li ng-repeat="instrument in instruments"><a href="" ng-click="addInstrumentToUser(instrument.id)">{{instrument.name}}</a></li>
-</ul>
-<h2>User Songs</h2>
+<div class="col-xs-12">
+    <div class="col-xs-6">
+        <h2>Search Songs</h2>
+        <input type="text" ng-model="searchString" ng-model-options="{ debounce: 100 }" ng-keydown="searchSongs()"/>
+        <ul>
+            <li ng-repeat="song in searchSongResults"><a href="" ng-click="addSongToUser(song.id)">{{song.title}}</a></li>
+        </ul>
+    </div>
+    <ul class="col-xs-6">
+        <li ng-repeat="instrument in instruments"><a href="" ng-click="addInstrumentToUser(instrument.id)">{{instrument.name}}</a></li>
+    </ul>
+</div>
+<h2>Your Songs</h2>
 <ul class="col-md-6">
     <li ng-repeat="song in userSongs">{{song.title}}</li>
 </ul>

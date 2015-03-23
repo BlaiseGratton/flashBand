@@ -13,14 +13,18 @@ angular.module('pitchApp')
         $scope.postSong = function () {
             Songs.save($scope.newSong);
         };
-  
+            
+        $scope.searchString = " ";
+
         $scope.searchSongs = function () {
-            $http.get('api/Search/Songs/' + $scope.searchString)
-                .success(function (data) {
-                    $scope.searchSongResults = data;
-                })
-                .error(function (err) { });
-        };
+            if ($scope.searchString.length > 2) {
+                $http.get('api/Search/Songs/' + $scope.searchString)
+                    .success(function (data) {
+                        $scope.searchSongResults = data;
+                    })
+                    .error(function (err) { });
+                };
+            };
 
         $http.get("api/Users/" + vm.userId + "/songs")
             .success(function (data) {
