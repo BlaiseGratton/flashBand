@@ -69,10 +69,10 @@ namespace Pitch.Controllers
         //    return Ok(player);
         //}
 
-        // GET: api/Songs/ahardda
+        // GET: api/Search/Songs/ahardda
         [Authorize]
         [HttpGet]
-        [Route("api/Songs/{searchString}")]
+        [Route("api/Search/Songs/{searchString}")]
         public List<Models.Song> SearchSongs(string searchString)
         {
             return _repo.fuzzySearchSongs(searchString);

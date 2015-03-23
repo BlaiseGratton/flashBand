@@ -14,9 +14,11 @@
     <input type="text" ng-model="newSong.title"/>
     <button ng-click="postSong()">New Song</button>
 </div>
-<h2>All Songs</h2>
+<h2>Search Songs</h2>
+<input type="text" ng-model="searchString"/>
+<button ng-click="searchSongs()">Search</button>
 <ul class="col-xs-6">
-    <li ng-repeat="song in dbSongs"><a href="" ng-click="addSongToUser(song.id)">{{song.title}}</a></li>
+    <li ng-repeat="song in searchSongResults"><a href="" ng-click="addSongToUser(song.id)">{{song.title}}</a></li>
 </ul>
 <h2>All Instruments</h2>
 <ul class="col-xs-6">
