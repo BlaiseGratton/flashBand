@@ -268,19 +268,13 @@ namespace Pitch.Repository
         public List<Models.Song> fuzzySearchSongs(string searchString)
         {
             searchString = searchString.ToLower();
-            //DREAM CODE
-            /*var query = from Song in _dbContext.Songs
-                        where(Song.title.ToLower().Contains(searchString.ToLower()) ||
-                        LevenshteinDistance.Compute(Song.title.ToLower(), searchString.ToLower()) > 2
-                        )
-                        select Song;
-            return query.ToList<Models.Song>();*/
+            int srchLen = searchString.Count();
             List<Models.Song> allSongs = GetAllSongs();
             List<Models.Song> matchedSongs = new List<Models.Song>();
             foreach (Song song in allSongs)
             {
                 string songTitle = song.title.ToLower();
-                if(songTitle.Contains(searchString) || LevenshteinDistance.Compute(songTitle, searchString) <= 3 )
+                if(songTitle.Contains(searchString) || LevenshteinDistance.Compute(string.Join(string.Empty,songTitle.Take(srchLen)), searchString) <= 3 )
                 {
                     matchedSongs.Add(song);
                 }

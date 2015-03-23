@@ -17,6 +17,9 @@ angular.module('pitchApp')
         $scope.searchString = " ";
 
         $scope.searchSongs = function () {
+            if ($scope.searchString.length === 0) {
+                $scope.searchSongResults = [];
+            }
             if ($scope.searchString.length > 2) {
                 $http.get('api/Search/Songs/' + $scope.searchString)
                     .success(function (data) {
@@ -45,7 +48,5 @@ angular.module('pitchApp')
             $scope.user.collection = "instruments";
             $scope.user.$addInstrument();
         };
-
-        
 
     }]);
