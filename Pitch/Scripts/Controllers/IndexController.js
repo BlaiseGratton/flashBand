@@ -15,4 +15,22 @@ angular.module('pitchApp')
                 $(this).collapse('hide');
             }
         });
+
+        $scope.evaluateExpanded = function () {
+            if ($scope.navbarExpanded) {
+                $scope.navbarExpanded = false;
+                return;
+            } 
+            if (!$scope.navbarExpanded) {
+                $scope.navbarExpanded = false;
+            }
+        };
+
+        $scope.evaluateCollapsed = function () {
+            if ($scope.navbarExpanded) {
+                return "collapse";
+            } else {
+                return '';
+            }
+        };
     }]);

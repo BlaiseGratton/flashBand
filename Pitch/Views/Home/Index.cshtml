@@ -12,12 +12,12 @@
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" data-ng-controller="IndexController">
 		<div class="container">
 			<div class="navbar-header">
-				<button class="btn btn-success navbar-toggle" ng-init="navbarExpanded=false" data-toggle="collapse" data-ng-click="navbarExpanded = !navbarExpanded" data-target="#collapse-target">
+				<button class="btn btn-success navbar-toggle" ng-init="navbarExpanded=false" data-toggle="collapse" ng-click="navbarExpanded=!navbarExpanded" data-target="#collapse-target">
 					<span class="glyphicon glyphicon-chevron-down"></span>
 				</button>
-				<a class="navbar-brand" href="#/">Home</a>
+				<a class="navbar-brand" data-toggle="checkToggle()" ng-click="evaluateExpanded()" data-target="#collapse-target" href="#/">Home</a>
 			</div>
-			<div class="collapse navbar-collapse" data-collapse="!navbarExpanded" id="collapse-target">
+			<div class="collapse navbar-collapse" data-ng-click="navbarExpanded = !navbarExpanded" id="collapse-target">
 				<ul class="nav navbar-nav navbar-right">
 					<li data-ng-hide="!authentication.isAuth"><a href="#/prof">{{authentication.userName}}</a></li>
 					<li data-ng-hide="!authentication.isAuth"><a href="#/flashes">Find Flashes</a></li>
