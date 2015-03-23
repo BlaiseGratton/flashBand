@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Pitch
+namespace Pitch.Providers
 {
-    static class LevenshteinDistance
+    public class LevenshteinDistance
     {
+        public LevenshteinDistance() { }
+
         public static int Compute(string s, string t)
         {
             int n = s.Length;

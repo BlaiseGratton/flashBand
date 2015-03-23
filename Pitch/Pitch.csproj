@@ -204,7 +204,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="LevenshteinDistance.cs" />
+    <Compile Include="Providers\LevenshteinDistance.cs" />
     <Compile Include="Migrations\201503142027362_Initial.cs" />
     <Compile Include="Migrations\201503142027362_Initial.Designer.cs">
       <DependentUpon>201503142027362_Initial.cs</DependentUpon>

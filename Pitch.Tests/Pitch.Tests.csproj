@@ -101,6 +101,7 @@
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="ModelTests.cs" />
     <Compile Include="AppRepositoryTests.cs" />
+    <Compile Include="LevenshteinTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
