@@ -276,6 +276,7 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-resource.min.js.map" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\checklist-model.js" />
     <Content Include="Scripts\Controllers\flashesController.js" />
     <Content Include="Scripts\Factories\accessFactory.js" />
     <Content Include="Scripts\Factories\authInterceptorService.js" />

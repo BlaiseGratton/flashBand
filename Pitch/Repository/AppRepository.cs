@@ -253,5 +253,15 @@ namespace Pitch.Repository
             }
             return MatchInstrumentPlayersToSongPlayers(instPlayers, playerSet);
         }
+
+        public List<Models.Profile> GetSetOfProfilesByIds(List<int> profIDs)
+        {
+            List<Models.Profile> profileSet = new List<Models.Profile>();
+            foreach (int ID in profIDs)
+            {
+                profileSet.Add(GetUserById(ID));
+            }
+            return profileSet;
+        }
     }
 }

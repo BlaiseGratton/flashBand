@@ -6,17 +6,23 @@ angular.module('pitchApp')
         vm.userId = localStorageService.get('authorizationData').userId;
 
         $scope.request = {};
-
+        $scope.requestInstruments = [];
+        $scope.requestSongs = [];
         $scope.request.instrumentIDs = [];
-
         $scope.request.songIDs = [];
 
         $scope.getFlashes = function () {
-            console.log($scope.request);
-            //$http({ url: 'api/Flashes/' + $scope.request, params: { request: $scope.request }, dataType: 'json', method: 'GET', data: '', headers: {"Content-Type": "application/json"}})
+            $scope.requestInstruments.forEach(function(instrument){
+                $scope.request.instrumentIDs.push(instrument.id);
+            });
+            $scope.requestSongs.forEach(function(song){
+                $scope.request.songIDs.push(song.id);
+            });
             $http.post('api/Flashes/', $scope.request)
                                 .success(function (response) {
                                     $scope.flashes = response;
+                                    $scope.request.instrumentIDs = [];
+                                    $scope.request.songIDs = [];
                                 })
                                 .error(function (err) {
                                     console.log(err.message);
@@ -26,12 +32,4 @@ angular.module('pitchApp')
         $scope.allSongs = Songs.query();
 
         $scope.allInstruments = Instruments.query();
-
-        $scope.addSongIdToRequest = function(songId){
-            $scope.request.songIDs.push(songId);
-        }
-
-        $scope.addInstIdToRequest = function(instId){
-            $scope.request.instrumentIDs.push(instId);
-        }
     }])

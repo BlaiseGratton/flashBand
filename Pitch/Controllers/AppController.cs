@@ -93,7 +93,8 @@ namespace Pitch.Controllers
             {
                 dynamic playersOfSongs = new ExpandoObject();
                 playersOfSongs.instrument = _repo.GetInstrumentById(instrumentId).name;
-                playersOfSongs.players = _repo.GetInstrumentPlayersOfSetOfSongs(instrumentId, convertedSongIDs);
+                List<int> profileIdsSet = _repo.GetInstrumentPlayersOfSetOfSongs(instrumentId, convertedSongIDs);
+                playersOfSongs.profiles = _repo.GetSetOfProfilesByIds(profileIdsSet);
                 results.Add(playersOfSongs);
             }
             return results;

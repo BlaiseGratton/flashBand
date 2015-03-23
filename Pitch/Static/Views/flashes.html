@@ -1,19 +1,28 @@
 ﻿<div>
     <p>Give me players who can play these songs: </p>
+    <div class="col-xs-6">
+        <label ng-repeat="song in allSongs">
+            <input type="checkbox" checklist-model="requestSongs" checklist-value="song"/> {{song.title}}
+        </label>
+    </div>
+    <div class="col-xs-6">
+        <label ng-repeat="instrument in allInstruments">
+            <input type="checkbox" checklist-model="requestInstruments" checklist-value="instrument"/> {{instrument.name}}
+        </label>
+    </div>
     <button ng-click="getFlashes()">Get Flashes</button>
     <ul class="col-xs-6">
-        <li ng-repeat="id in request.songIDs">{{id}}</li>
+        <li ng-repeat="song in request.songs">{{song.title}}</li>
     </ul>
     <ul class="col-xs-6">
-        <li ng-repeat="id in request.instrumentIDs">{{id}}</li>
-    </ul>
-    <ul class="col-xs-6">
-        <li ng-repeat="song in allSongs"><a ng-click="addSongIdToRequest(song.id)">{{song.title}}</a></li>
-    </ul>
-    <ul class="col-xs-6">
-        <li ng-repeat="instrument in allInstruments"><a ng-click="addInstIdToRequest(instrument.id)">{{instrument.name}}</a></li>
+        <li ng-repeat="instrument in request.instruments">{{instrument.name}}</li>
     </ul>
     <ul>
-        <li ng-repeat="playerSet in flashes">{{playerSet.instrument}}</li>
+        <li ng-repeat="playerSet in flashes">
+            <h3>{{playerSet.instrument}}</h3>
+            <ul>
+                <li ng-repeat="profile in playerSet.profiles">{{profile.userName}}</li>
+            </ul>
+        </li>
     </ul>
 </div>
