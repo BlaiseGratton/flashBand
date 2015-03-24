@@ -10,7 +10,7 @@
                     <h4>Search Songs</h4>
                     <input type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchSongs()"/>
                     <ul>
-                        <li ng-repeat="song in searchSongResults"><a href="" ng-click="addSongToUser(song.id)">{{song.title}}</a></li>
+                        <li ng-repeat="song in searchSongResults"><a href="" ng-click="addSongToUser(song.id)" class="glyphicon glyphicon-plus"></a>{{song.title}}</li>
                     </ul>
                 </div>
             </div>
