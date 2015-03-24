@@ -56,5 +56,9 @@ a.glyphicon.glyphicon-plus {
 }
 
 /***************************************
- *      
+ *      FLASHES PAGE
  ***************************************/
+
+.checklist {
+    display: block;
+}

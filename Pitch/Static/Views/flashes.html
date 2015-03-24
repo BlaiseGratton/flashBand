@@ -1,13 +1,13 @@
 ﻿<div>
-    <p>Give me players who can play these songs: </p>
+    <p>Give me <span ng-model="requestInstruments" >{{ instrumentList }}</span>players who can play these songs: </p>
     <div class="col-xs-6">
-        <label ng-repeat="song in allSongs">
-            <input type="checkbox" checklist-model="requestSongs" checklist-value="song"/> {{song.title}}
+        <label class="checklist" ng-repeat="instrument in allInstruments">
+            <input type="checkbox" checklist-model="requestInstruments" checklist-value="instrument"/> {{instrument.name}}
         </label>
     </div>
     <div class="col-xs-6">
-        <label ng-repeat="instrument in allInstruments">
-            <input type="checkbox" checklist-model="requestInstruments" checklist-value="instrument"/> {{instrument.name}}
+        <label class="checklist" ng-repeat="song in allSongs">
+            <input type="checkbox" checklist-model="requestSongs" checklist-value="song"/> {{song.title}}
         </label>
     </div>
     <button ng-click="getFlashes()">Get Flashes</button>
