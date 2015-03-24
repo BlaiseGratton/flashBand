@@ -17,20 +17,10 @@ angular.module('pitchApp')
         });
 
         $scope.evaluateExpanded = function () {
-            if ($scope.navbarExpanded) {
-                $scope.navbarExpanded = false;
-                return;
-            } 
-            if (!$scope.navbarExpanded) {
-                $scope.navbarExpanded = false;
-            }
-        };
-
-        $scope.evaluateCollapsed = function () {
-            if ($scope.navbarExpanded) {
-                return "collapse";
-            } else {
-                return '';
-            }
+            setTimeout(function () {
+                if ($scope.navbarExpanded === true) {
+                    $scope.navbarExpanded = false;
+                }
+            }, 10);
         };
     }]);
