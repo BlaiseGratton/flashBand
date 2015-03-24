@@ -1,1 +1,12 @@
-﻿<a ng-click="log()">Click me!</a>
+﻿<div class="fade in">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Edit Instruments</h4>
+            <div class="modal-body">
+                <ul>
+                    <li ng-repeat="instrument in instruments">{{instrument.name}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

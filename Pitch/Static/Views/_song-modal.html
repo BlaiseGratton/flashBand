@@ -1,5 +1,19 @@
-﻿<div class="fade-in">
+﻿<div class="fade in">
     <div class="modal-content">
-        <a ng-click="log()">Click me!</a>
+        <div class="modal-header">
+            <h2 class="modal-title">Edit Songs</h2>
+            <div class="modal-body">
+                <ul class="col-xs-6">
+                    <li ng-repeat="song in songs"><a class="close">&times;</a>{{song.title}}</li>
+                </ul>
+                <div class="col-xs-6">
+                    <h4>Search Songs</h4>
+                    <input type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchSongs()"/>
+                    <ul>
+                        <li ng-repeat="song in searchSongResults"><a href="" ng-click="addSongToUser(song.id)">{{song.title}}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

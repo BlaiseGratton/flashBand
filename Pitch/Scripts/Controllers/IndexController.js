@@ -21,6 +21,6 @@ angular.module('pitchApp')
                 if ($scope.navbarExpanded === true) {
                     $scope.navbarExpanded = false;
                 }
-            }, 10);
+            }, 50);
         };
     }]);

@@ -303,6 +303,7 @@
     <Content Include="Scripts\loading-bar.min.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\App\main.js" />
+    <Content Include="Scripts\Services\SongsService.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Static\Views\flashes.html" />
     <Content Include="Static\Views\home.html" />

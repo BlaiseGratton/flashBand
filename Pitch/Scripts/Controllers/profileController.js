@@ -10,25 +10,6 @@ angular.module('pitchApp')
             Instruments.save($scope.newInstrument);
         };
 
-        $scope.postSong = function () {
-            Songs.save($scope.newSong);
-        };
-            
-        $scope.searchString = " ";
-
-        $scope.searchSongs = function () {
-            if ($scope.searchString.length === 0) {
-                $scope.searchSongResults = [];
-            }
-            if ($scope.searchString.length > 2) {
-                $http.get('api/Search/Songs/' + $scope.searchString)
-                    .success(function (data) {
-                        $scope.searchSongResults = data;
-                    })
-                    .error(function (err) { });
-                };
-            };
-
         $http.get("api/Users/" + vm.userId + "/Songs")
             .success(function (data) {
                 $scope.songs = data;
@@ -40,12 +21,6 @@ angular.module('pitchApp')
                 $scope.instruments = data;
             })
             .error(function (err) { console.log(err.message); })
-        $scope.addSongToUser = function(songId){
-            $scope.user.userId = vm.userId;
-            $scope.user.itemId = songId;
-            $scope.user.collection = "songs";
-            $scope.user.$addSong();
-        };
 
         $scope.addInstrumentToUser = function(instrumentId){
             $scope.user.userId = vm.userId;
