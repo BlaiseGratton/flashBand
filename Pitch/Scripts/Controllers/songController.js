@@ -31,11 +31,14 @@ angular.module('pitchApp')
             Songs.save($scope.newSong);
         };
 
-        $scope.addSongToUser = function (songId) {
-            $scope.user.userId = vm.userId;
-            $scope.user.itemId = songId;
-            $scope.user.collection = "songs";
-            $scope.user.$addSong();
+        $scope.addSongToUser = function(song){
+            if ($scope.songs.indexOf(song) === -1) {
+                $scope.songs.push(song);
+                $scope.user.userId = vm.userId;
+                $scope.user.itemId = song.id;
+                $scope.user.collection = "songs";
+                $scope.user.$addSong();
+            }
         };
 
 
