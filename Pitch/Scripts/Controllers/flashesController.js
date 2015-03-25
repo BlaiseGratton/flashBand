@@ -50,4 +50,28 @@ angular.module('pitchApp')
         $scope.allSongs = Songs.query();
 
         $scope.allInstruments = Instruments.query();
+
+        $scope.searchSongs = function () {
+            if ($scope.searchString.length === 0) {
+                $scope.searchSongResults = [];
+            }
+            if ($scope.searchString.length > 2) {
+                $http.get('api/Search/Songs/' + $scope.searchString)
+                    .success(function (data) {
+                        $scope.searchSongResults = data;
+                    })
+                    .error(function (err) { });
+            };
+        };
+
+        $scope.addSongToRequest = function(song){
+            if ($scope.requestSongs.indexOf(song) === -1) {
+                $scope.requestSongs.push(song);
+            }
+        };
+
+        $scope.removeFromRequest = function(song){
+            var index = $scope.requestSongs.indexOf(song);
+            $scope.requestSongs.splice(index, 1);
+        };
     }])

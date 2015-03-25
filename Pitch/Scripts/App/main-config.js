@@ -32,20 +32,10 @@ angular.module('pitchApp')
             templateUrl: '/Static/Views/flashes.html',
             controller: 'FlashesController'
         })
-        .when('/', {
+        /*.when('/', {
             templateUrl: '/Static/Views/home.html',
             controller: 'IndexController',
-            /*resolve: {
-                app: function(accessFactory, $location){
-                    if (accessFactory.checkLogin() === false){
-                        accessFactory.getUserId($rootScope.userName);
-                        $location.path('/home');
-                    } else {
-                        $location.path('/login');
-                    }
-                }
-            }*/
-        })
+        })*/
         .otherwise({ redirectTo: '/home' });
     })
     .config(function ($httpProvider) {
