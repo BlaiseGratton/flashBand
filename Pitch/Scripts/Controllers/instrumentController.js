@@ -3,7 +3,6 @@ angular.module('pitchApp')
     .controller('InstrumentController', ['$http', '$scope', 'Users', 'Instruments', 'instrumentFactory', 'localStorageService', function($http, $scope, Users, Instruments, instrumentFactory, localStorageService){
         var vm = this;
         vm.userId = localStorageService.get('authorizationData').userId;
-        $scope.user = Users.get({ id: vm.userId });
 
         $scope.instruments = instrumentFactory.userInstruments;
 

@@ -11,4 +11,9 @@ angular.module('pitchApp')
             $scope.songs = songFactory.userSongs;
             $scope.instruments = instrumentFactory.userInstruments;
         });
+
+        $scope.$on('valuesUpdated', function(){
+            $scope.songs = songFactory.userSongs;
+            $scope.instruments = instrumentFactory.userInstruments;
+        });
     }]);
