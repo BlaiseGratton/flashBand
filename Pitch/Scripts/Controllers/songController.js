@@ -32,12 +32,14 @@ angular.module('pitchApp')
 
         $scope.addSongToUser = function(song){
             var songNotInArray = true;
-            $scope.songs.forEach(function(userSong){
-                if (userSong.id === song.id) {
-                    songNotInArray = false;
-                    return;
-                }
-            });
+            if ($scope.songs.length > 0) {
+                $scope.songs.forEach(function (userSong) {
+                    if (userSong.id === song.id) {
+                        songNotInArray = false;
+                        return;
+                    }
+                });
+            }
             if (songNotInArray) {
                 $scope.songs.push(song);
                 $scope.user.userId = vm.userId;
@@ -49,11 +51,11 @@ angular.module('pitchApp')
 
         $scope.deleteSong = function(song){
             $http.delete('api/Users/' + vm.userId + '/Songs/' + song.id)
-                .success(function(){
+                .then(function(){
                     var index = $scope.songs.indexOf(song);
                     $scope.songs.splice(index, 1);
-                })
-                .error(function (err) {
+                },
+                function (err) {
                     console.log(err.message);
                 })
         };

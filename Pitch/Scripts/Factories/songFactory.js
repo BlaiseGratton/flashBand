@@ -10,7 +10,7 @@ angular.module('pitchApp')
         $http.get("api/Users/" + userId + "/Songs").then(
             function(data){
                 songFactory.userSongs = data.data;
-                console.log(data.data);
+                $rootScope.$broadcast("valuesUpdated");
             }, function(err){
                 console.log(err.message);
             }
