@@ -1,16 +1,15 @@
 ﻿'use strict';
 angular.module('pitchApp')
-    .controller('SongController', ['$http', '$scope', 'Users', 'Songs', 'localStorageService', function($http, $scope, Users, Songs, localStorageService){
+    .controller('SongController', ['$http', '$scope', 'Users', 'Songs', 'songFactory', 'localStorageService', function($http, $scope, Users, Songs, songFactory, localStorageService){
         var vm = this;
         vm.userId = localStorageService.get('authorizationData').userId;
-
         $scope.user = Users.get({ id: vm.userId });
 
-        $http.get("api/Users/" + vm.userId + "/Songs")
-            .success(function (data) {
-                $scope.songs = data;
-            })
-            .error(function (err) { console.log(err.message); })
+        $scope.songs = songFactory.userSongs;
+
+        $scope.$watch('songs', function(){
+            songFactory.updateSongs($scope.songs);
+        });
 
         $scope.searchString = " ";
 
