@@ -55,6 +55,16 @@ namespace Pitch.Controllers
             return Request.CreateResponse(HttpStatusCode.Accepted);
         }
 
+        // DELETE: api/Users/2/Instruments/5
+        [Authorize]
+        [HttpDelete]
+        [Route("api/Users/{userId}/Instruments/{instrumentId}")]
+        public HttpResponseMessage DeleteInstrument(int userId, int instrumentId)
+        {
+            _repo.DeleteInstrumentFromPlayer(userId, instrumentId);
+            return Request.CreateResponse(HttpStatusCode.Accepted);
+        }
+
         // GET: api/Instruments
         [Authorize]
         [Route("api/Instruments")]

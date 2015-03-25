@@ -221,6 +221,19 @@ namespace Pitch.Repository
             _dbContext.SaveChanges();
         }
 
+        public void DeleteInstrumentFromPlayer(int userId, int instrumentId)
+        {
+            var query = from ProfileInstrument in _dbContext.UserInstruments
+                        where (ProfileInstrument.ProfileID == userId &&
+                               ProfileInstrument.InstrumentId == instrumentId)
+                        select ProfileInstrument;
+            foreach (var item in query)
+            {
+                _dbContext.UserInstruments.Remove(item);
+            }
+            _dbContext.SaveChanges();
+        }
+
         public List<Song> GetUserSongs(int userId)
         {
             IEnumerable<int> songIDs = from SongProfile in _dbContext.UserSongs

@@ -1,6 +1,6 @@
 ﻿'use strict';
 angular.module('pitchApp')
-    .controller('ProfileController', ['localStorageService', 'Users', 'Instruments', 'songFactory', '$scope', '$http', function (localStorageService, Users, Instruments, songFactory, $scope, $http) {
+    .controller('ProfileController', ['localStorageService', 'Users', 'Instruments', 'songFactory', 'instrumentFactory', '$scope', '$http', function (localStorageService, Users, Instruments, songFactory, instrumentFactory, $scope, $http) {
         var vm = this;
         vm.userId = localStorageService.get('authorizationData').userId;
         $scope.user = Users.get({ id: vm.userId });
@@ -9,19 +9,6 @@ angular.module('pitchApp')
 
         $scope.$on('valuesUpdated', function(){
             $scope.songs = songFactory.userSongs;
+            $scope.instruments = instrumentFactory.userInstruments;
         });
-
-        $http.get("api/Users/" + vm.userId + "/Instruments")
-            .success(function (data) {
-                $scope.instruments = data;
-            })
-            .error(function (err) { console.log(err.message); })
-
-        $scope.addInstrumentToUser = function(instrumentId){
-            $scope.user.userId = vm.userId;
-            $scope.user.itemId = instrumentId;
-            $scope.user.collection = "instruments";
-            $scope.user.$addInstrument();
-        };
-
     }]);
