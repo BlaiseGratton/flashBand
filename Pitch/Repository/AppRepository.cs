@@ -320,5 +320,22 @@ namespace Pitch.Repository
             }
             return matchedSongs;
         }
+        
+        public List<Models.Instrument> fuzzySearchInstruments(string searchString)
+        {
+            searchString = searchString.ToLower();
+            int srchLen = searchString.Count();
+            List<Models.Instrument> allInstruments = GetAllInstruments().ToList();
+            List<Models.Instrument> matchedInstruments = new List<Models.Instrument>();
+            foreach (Instrument instrument in allInstruments)
+            {
+                string instrumentName = instrument.name.ToLower();
+                if(instrumentName.Contains(searchString) || LevenshteinDistance.Compute(string.Join(string.Empty,instrumentName.Take(srchLen)), searchString) <= 3 )
+                {
+                    matchedInstruments.Add(instrument);
+                }
+            }
+            return matchedInstruments;
+        }
     }
 }

@@ -107,6 +107,17 @@ namespace Pitch.Controllers
             return _repo.fuzzySearchSongs(searchString);
         }
 
+        // GET: api/Search/Instruments/herpderpsum
+        [Authorize]
+        [HttpGet]
+        [Route("api/Search/Instruments/{searchString}")]
+        public List<Models.Instrument> SearchInstruments(string searchString)
+        {
+            return _repo.fuzzySearchInstruments(searchString);
+        }
+
+
+
 
         // POST: api/Flashes/{request}
         [Authorize]
