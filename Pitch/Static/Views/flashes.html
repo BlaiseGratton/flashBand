@@ -1,14 +1,19 @@
-﻿<div>
+﻿<div class="request">
     <p>Give me <span ng-model="requestInstruments" >{{ instrumentList }}</span>players who can play these songs: </p>
     <ul>
         <li ng-repeat="song in requestSongs"><a ng-click="removeFromRequest(song)" class="close">&times;</a>{{song.title}}</li>
     </ul>
-    <div class="col-xs-6">
-        <label class="checklist" ng-repeat="instrument in allInstruments">
-            <input type="checkbox" checklist-model="requestInstruments" checklist-value="instrument"/> {{instrument.name}}
-        </label>
+</div>
+<div class="request-inputs">
+    <div class="col-sm-6 col-xs-12">
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6">
+            <label class="checklist" ng-repeat="instrument in allInstruments">
+                <input type="checkbox" checklist-model="requestInstruments" checklist-value="instrument"/> {{instrument.name}}
+            </label>
+        </div>
     </div>
-    <div class="col-xs-6">
+    <div class="col-sm-6 col-xs-12">
         <input type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchSongs()"/>
         <ul>
             <li ng-repeat="song in searchSongResults"><a class="glyphicon glyphicon-plus" ng-click="addSongToRequest(song)"></a>{{song.title}}</li>

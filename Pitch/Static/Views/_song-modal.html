@@ -4,7 +4,7 @@
             <h2 class="modal-title">Edit Songs</h2>
             <div class="modal-body">
                 <ul class="col-xs-6">
-                    <li ng-repeat="song in songs"><a class="close">&times;</a>{{song.title}}</li>
+                    <li ng-repeat="song in songs"><a ng-click="deleteSong(song)" class="close">&times;</a>{{song.title}}</li>
                 </ul>
                 <div class="col-xs-6">
                     <h4>Search Songs</h4>

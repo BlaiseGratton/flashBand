@@ -208,6 +208,19 @@ namespace Pitch.Repository
             return query.First<Models.Song>().ID;
         }
 
+        public void DeleteSongFromPlayer(int userId, int songId)
+        {
+            var query = from ProfileSong in _dbContext.UserSongs
+                        where (ProfileSong.ProfileID == userId &&
+                               ProfileSong.SongId == songId)
+                        select ProfileSong;
+            foreach (var item in query)
+            {
+                _dbContext.UserSongs.Remove(item);
+            }
+            _dbContext.SaveChanges();
+        }
+
         public List<Song> GetUserSongs(int userId)
         {
             IEnumerable<int> songIDs = from SongProfile in _dbContext.UserSongs

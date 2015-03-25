@@ -63,3 +63,15 @@ a.glyphicon.glyphicon-plus {
 .checklist {
     display: block;
 }
+
+.request p {
+    margin-top: 80px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.request ul {
+    width: 370px;
+    margin: 6px auto;
+    padding-left: 84px;
+}

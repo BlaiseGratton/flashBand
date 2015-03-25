@@ -36,6 +36,25 @@ namespace Pitch.Controllers
             //return db.Players;
         }
 
+        // GET: api/Songs/3
+        [Authorize]
+        [Route("api/Songs/{id}")]
+        [HttpGet]
+        public Models.Song GetSong(int id)
+        {
+            return _repo.GetSongById(id);
+        }
+
+        // DELETE: api/Users/3/Songs/4
+        [Authorize]
+        [HttpDelete]
+        [Route("api/Users/{userId}/Songs/{songId}")]
+        public HttpResponseMessage DeleteSong(int userId, int songId)
+        {
+            _repo.DeleteSongFromPlayer(userId, songId);
+            return Request.CreateResponse(HttpStatusCode.Accepted);
+        }
+
         // GET: api/Instruments
         [Authorize]
         [Route("api/Instruments")]

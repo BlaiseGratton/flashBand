@@ -10,6 +10,9 @@
                             },
                           addInstrument: {
                                 method: 'POST'
+                            },
+                          deleteSong: {
+                                method: 'DELETE'
                             }
                         });
     }]);
