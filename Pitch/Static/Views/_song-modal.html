@@ -12,7 +12,7 @@
                         <h4 class="col-xs-6" ng-class="{'unselected-tab override': displaySearch}"><a ng-click="displaySearch=!displaySearch" href="">Add Song</a></h4> 
                     </div>
                     <div class="col-xs-12 tabbed-box" ng-show="displaySearch">
-                        <input type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchSongs()"/>
+                        <input class="col-xs-8 col-xs-offset-2" type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchSongs()"/>
                         <ul>
                             <li ng-repeat="song in searchSongResults"><a href="" ng-click="addSongToUser(song)" class="glyphicon glyphicon-plus"></a>{{song.title}}</li>
                         </ul>
