@@ -7,13 +7,20 @@
                     <li ng-repeat="instrument in instruments"><a ng-click="deleteInstrument(instrument)" class="close">&times;</a>{{instrument.name}}</li>
                 </ul>
                 <div class="col-xs-6 search-wrapper">
-                    <h4>Search Instruments</h4>
-                    <h4>Add New Instrument</h4>
-                    <div class="tabbed-box" ng-show="">
-                        <input type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchInstruments()"/>
-                        <ul>
+                    <div class="col-xs-12 tab-wrapper">
+                        <h4 ng-class="{'unselected-tab override': !displaySearch}" class="col-xs-6"><a ng-click="displaySearch=!displaySearch" href="">Search Instruments</a></h4>
+                        <h4 ng-class="{'unselected-tab override': displaySearch}" class="col-xs-6"><a ng-click="displaySearch=!displaySearch" href="">Add New Instrument</a></h4>
+                    </div>
+                    <div class="col-xs-12 tabbed-box" ng-show="displaySearch">
+                        <input class="col-xs-8 col-xs-offset-2" type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchInstruments()"/>
+                        <ul class="col-xs-10 col-xs-offset-2">
                             <li ng-repeat="instrument in searchInstrumentResults"><a href="" ng-click="addInstrumentToUser(instrument)" class="glyphicon glyphicon-plus"></a>{{instrument.name}}</li>
                         </ul>
+                    </div>
+                    <div class="col-xs-12 tabbed-box" ng-show="!displaySearch">
+                        <h4 class="col-xs-6 col-xs-offset-3">Instrument:</h4>
+                        <input class="col-xs-8 col-xs-offset-2" type="text" ng-model="newInstrument.name" />
+                        <button class="col-xs-6 col-xs-offset-3 btn btn-info" ng-click="postInstrument()">Add Instrument</button>
                     </div>
                 </div>
             </div>

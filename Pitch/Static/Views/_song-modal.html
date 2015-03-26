@@ -13,14 +13,14 @@
                     </div>
                     <div class="col-xs-12 tabbed-box" ng-show="displaySearch">
                         <input class="col-xs-8 col-xs-offset-2" type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchSongs()"/>
-                        <ul>
+                        <ul class="col-xs-10 col-xs-offset-2">
                             <li ng-repeat="song in searchSongResults"><a href="" ng-click="addSongToUser(song)" class="glyphicon glyphicon-plus"></a>{{song.title}}</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 tabbed-box" ng-show="!displaySearch">
-                        <h3>Song Title:</h3>
-                        <input class="col-xs-8 text-input" type="text" ng-model="newSong.title" />
-                        <button ng-click="postSong()">Add Song</button>
+                        <h4 class="col-xs-4 col-xs-offset-4">Title:</h4>
+                        <input class="col-xs-8 col-xs-offset-2" type="text" ng-model="newSong.title" />
+                        <button class="col-xs-6 col-xs-offset-3 btn btn-info" ng-click="postSong()">Add Song</button>
                     </div>
                 </div>
             </div>

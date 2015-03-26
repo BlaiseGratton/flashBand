@@ -7,6 +7,8 @@ angular.module('pitchApp')
 
         $scope.instruments = instrumentFactory.userInstruments;
 
+        $scope.displaySearch = true;
+
         $scope.$watch('instruments', function(){
             instrumentFactory.updateInstruments($scope.instruments);
         });
@@ -28,6 +30,7 @@ angular.module('pitchApp')
 
         $scope.postInstrument = function(){
             Instruments.save($scope.newInstrument);
+            $scope.newInstrument = "";
         };
 
         $scope.addInstrumentToUser = function(instrument){

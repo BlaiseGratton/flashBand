@@ -10,6 +10,7 @@ namespace Pitch.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(Pitch.AppContext context)
