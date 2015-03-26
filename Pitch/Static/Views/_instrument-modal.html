@@ -6,12 +6,15 @@
                 <ul class="col-xs-6">
                     <li ng-repeat="instrument in instruments"><a ng-click="deleteInstrument(instrument)" class="close">&times;</a>{{instrument.name}}</li>
                 </ul>
-                <div class="col-xs-6">
+                <div class="col-xs-6 search-wrapper">
                     <h4>Search Instruments</h4>
-                    <input type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchInstruments()"/>
-                    <ul>
-                        <li ng-repeat="instrument in searchInstrumentResults"><a href="" ng-click="addInstrumentToUser(instrument)" class="glyphicon glyphicon-plus"></a>{{instrument.name}}</li>
-                    </ul>
+                    <h4>Add New Instrument</h4>
+                    <div class="tabbed-box" ng-show="">
+                        <input type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchInstruments()"/>
+                        <ul>
+                            <li ng-repeat="instrument in searchInstrumentResults"><a href="" ng-click="addInstrumentToUser(instrument)" class="glyphicon glyphicon-plus"></a>{{instrument.name}}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

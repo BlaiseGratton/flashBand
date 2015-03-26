@@ -30,6 +30,7 @@ angular.module('pitchApp')
 
         $scope.postSong = function () {
             Songs.save($scope.newSong);
+            $scope.newSong = {};
         };
 
         $scope.addSongToUser = function(song){

@@ -6,14 +6,21 @@
                 <ul class="col-xs-6">
                     <li ng-repeat="song in songs"><a ng-click="deleteSong(song)" class="close">&times;</a>{{song.title}}</li>
                 </ul>
-                <div class="col-xs-6">
-                    <h4><a ng-click="displaySearch=!displaySearch">Search Songs</a></h4>
-                    <h4><a ng-click="displaySearch=!displaySearch">Add Song</a></h4> 
-                    <div ng-show="displaySearch">
+                <div class="col-xs-6 search-wrapper">
+                    <div class="col-xs-12 tab-wrapper">
+                        <h4 ng-class="{'unselected-tab override': !displaySearch}" class="col-xs-6"><a ng-click="displaySearch=!displaySearch" href="">Search Songs</a></h4>
+                        <h4 class="col-xs-6" ng-class="{'unselected-tab override': displaySearch}"><a ng-click="displaySearch=!displaySearch" href="">Add Song</a></h4> 
+                    </div>
+                    <div class="col-xs-12 tabbed-box" ng-show="displaySearch">
                         <input type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchSongs()"/>
                         <ul>
                             <li ng-repeat="song in searchSongResults"><a href="" ng-click="addSongToUser(song)" class="glyphicon glyphicon-plus"></a>{{song.title}}</li>
                         </ul>
+                    </div>
+                    <div class="col-xs-12 tabbed-box" ng-show="!displaySearch">
+                        <h3>Song Title:</h3>
+                        <input class="col-xs-8 text-input" type="text" ng-model="newSong.title" />
+                        <button ng-click="postSong()">Add Song</button>
                     </div>
                 </div>
             </div>

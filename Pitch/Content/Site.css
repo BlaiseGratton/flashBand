@@ -56,6 +56,48 @@ a.glyphicon.glyphicon-plus {
     text-decoration: none;
 }
 
+
+.tabbed-box {
+    border-bottom: 2px solid lightblue;
+    border-left: 2px solid lightblue;
+    border-right: 2px solid lightblue;
+    min-height: 200px;
+}
+
+.tab-wrapper h4 {
+    font-size: 14px;
+    border-radius: 8px 8px 0 0;
+    border: 2px solid lightblue;
+    border-bottom: none;
+    min-height: 18px;
+    padding: 10px 0;
+    margin: 0;
+    text-align: center;
+}
+
+h4.override {
+    border-bottom: 2px solid lightblue;
+}
+
+.search-wrapper div {
+    padding: 0;
+}
+
+.tab-wrapper a {
+    color: #333;
+    text-decoration: none;
+}
+
+.tab-wrapper a:hover {
+    color: black;
+    font-weight: 500;
+}
+
+.unselected-tab a {
+    color: lightgrey;
+}
+
+
 /***************************************
  *      FLASHES PAGE
  ***************************************/
