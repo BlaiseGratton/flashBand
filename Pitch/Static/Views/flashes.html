@@ -1,25 +1,28 @@
-﻿<div class="request">
+﻿<div class="request col-xs-12 col-sm-8 col-sm-offset-2">
     <p>Give me <span ng-model="requestInstruments" >{{ instrumentList }}</span>players who can play these songs: </p>
-    <ul>
+    <ul class="col-xs-offset-3 col-sm-offset-4 col-md-offset-5">
         <li ng-repeat="song in requestSongs"><a ng-click="removeFromRequest(song)" class="close">&times;</a>{{song.title}}</li>
     </ul>
 </div>
-<div class="request-inputs">
-    <div class="col-sm-6 col-xs-12">
-        <div class="col-sm-6"></div>
-        <div class="col-sm-6">
-            <label class="checklist" ng-repeat="instrument in allInstruments">
-                <input type="checkbox" checklist-model="requestInstruments" checklist-value="instrument"/> {{instrument.name}}
-            </label>
+<div class="request-inputs col-xs-12 col-sm-8 col-sm-offset-2">
+    <div class="col-xs-12">
+        <div class="col-sm-6 col-xs-12">
+            <div class="">
+                <label class="checklist" ng-repeat="instrument in allInstruments">
+                    <input type="checkbox" checklist-model="requestInstruments" checklist-value="instrument"/> {{instrument.name}}
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+            <input class="col-xs-8 col-xs-offset-2" type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchSongs()"/>
+            <ul class="col-xs-10 col-xs-offset-1">
+                <li ng-repeat="song in searchSongResults"><a class="glyphicon glyphicon-plus" ng-click="addSongToRequest(song)"></a>{{song.title}}</li>
+            </ul>
         </div>
     </div>
-    <div class="col-sm-6 col-xs-12">
-        <input type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchSongs()"/>
-        <ul>
-            <li ng-repeat="song in searchSongResults"><a class="glyphicon glyphicon-plus" ng-click="addSongToRequest(song)"></a>{{song.title}}</li>
-        </ul>
+    <div class="text-center">
+        <button class="btn btn-info" ng-click="getFlashes()">Get Flashes</button>
     </div>
-    <button ng-click="getFlashes()">Get Flashes</button>
 </div>
 <div>
     <ul>

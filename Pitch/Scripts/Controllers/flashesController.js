@@ -36,6 +36,7 @@ angular.module('pitchApp')
             $scope.requestSongs.forEach(function(song){
                 $scope.request.songIDs.push(song.id);
             });
+            console.log($scope.request);
             $http.post('api/Flashes/', $scope.request)
                                 .success(function (response) {
                                     $scope.flashes = response;
