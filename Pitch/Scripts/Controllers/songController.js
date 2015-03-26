@@ -4,6 +4,8 @@ angular.module('pitchApp')
         var vm = this;
         vm.userId = localStorageService.get('authorizationData').userId;
 
+        $scope.displaySearch = true;
+
         $scope.songs = songFactory.userSongs;
 
         $scope.$watch('songs', function(){

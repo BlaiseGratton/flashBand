@@ -7,11 +7,14 @@
                     <li ng-repeat="song in songs"><a ng-click="deleteSong(song)" class="close">&times;</a>{{song.title}}</li>
                 </ul>
                 <div class="col-xs-6">
-                    <h4>Search Songs</h4>
-                    <input type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchSongs()"/>
-                    <ul>
-                        <li ng-repeat="song in searchSongResults"><a href="" ng-click="addSongToUser(song)" class="glyphicon glyphicon-plus"></a>{{song.title}}</li>
-                    </ul>
+                    <h4><a ng-click="displaySearch=!displaySearch">Search Songs</a></h4>
+                    <h4><a ng-click="displaySearch=!displaySearch">Add Song</a></h4> 
+                    <div ng-show="displaySearch">
+                        <input type="text" ng-model="searchString" ng-model-options="{ debounce: 300 }" ng-change="searchSongs()"/>
+                        <ul>
+                            <li ng-repeat="song in searchSongResults"><a href="" ng-click="addSongToUser(song)" class="glyphicon glyphicon-plus"></a>{{song.title}}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
