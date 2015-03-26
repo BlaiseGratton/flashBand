@@ -3,6 +3,7 @@ angular.module('pitchApp')
     .controller('SongController', ['$http', '$scope', 'Users', 'Songs', 'songFactory', 'localStorageService', function($http, $scope, Users, Songs, songFactory, localStorageService){
         var vm = this;
         vm.userId = localStorageService.get('authorizationData').userId;
+        $scope.user = Users.get({ id: vm.userId });
 
         $scope.displaySearch = true;
 
@@ -44,8 +45,8 @@ angular.module('pitchApp')
             if (songNotInArray) {
                 $scope.songs.push(song);
                 $scope.user.userId = vm.userId;
-                $scope.user.itemId = song.id;
                 $scope.user.collection = "songs";
+                $scope.user.itemId = song.id;
                 $scope.user.$addSong();
             }
         };
