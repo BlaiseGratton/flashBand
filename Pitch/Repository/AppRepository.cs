@@ -19,6 +19,7 @@ namespace Pitch.Repository
         public AppRepository()
         {
             _dbContext = new AppContext();
+            _dbContext.Database.CreateIfNotExists();
             _dbContext.Players.Load();
             _dbContext.Instruments.Load();
             _dbContext.Songs.Load();

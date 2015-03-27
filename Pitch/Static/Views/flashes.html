@@ -24,11 +24,11 @@
         <button class="btn btn-info" ng-click="getFlashes()">Get Flashes</button>
     </div>
 </div>
-<div>
+<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
     <ul>
         <li ng-repeat="playerSet in flashes" class="col-sm-6">
-            <h3>{{playerSet.instrument}}</h3>
-            <ul>
+            <h3 class="text-center">{{playerSet.instrument}}</h3>
+            <ul class="col-xs-7 col-xs-offset-5">
                 <li ng-repeat="profile in playerSet.profiles">{{profile.userName}}</li>
             </ul>
         </li>

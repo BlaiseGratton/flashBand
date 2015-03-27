@@ -5,6 +5,7 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #fdfde4;
 }
 
 .body-content {
@@ -48,8 +49,39 @@ li {
 }
 
 /****************************************
+ *      HOME PAGE
+ ****************************************/
+
+.home-page {
+    margin-top: 78px;
+}
+
+.home-page p {
+    color: darkblue;
+    font-size: 18px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+/****************************************
+ *      PROFILE PAGE
+ ****************************************/
+
+.profile-list-wrapper {
+    margin-top: 30px;
+}
+
+.profile-list-wrapper h2 {
+    margin: 0 0 20px;
+}
+
+/****************************************
  *      MODALS
  ****************************************/
+
+.modal-content {
+    background-color: #fdfde4;
+}
 
 .modal-backdrop {
     height: 100%;
@@ -101,7 +133,7 @@ a.glyphicon.glyphicon-plus {
 
 h4.override {
     border-bottom: 2px solid lightblue;
-    background-color: #f1f1f1;
+    background-color: #fdfdf1;
 }
 
 .search-wrapper div {
@@ -149,4 +181,8 @@ h4.override {
 
 .request-inputs button {
     margin: 15px 0;
+}
+
+.request-inputs input[type='text'] {
+    margin-top: 15px;
 }

@@ -12,7 +12,7 @@ angular.module('pitchApp')
         $scope.login = function () {
 
             authService.login($scope.loginData).then(function(response){
-                $location.path('/home');
+                $location.path('/prof');
             },
             function (err) {
                 $scope.message = err.error_description;
