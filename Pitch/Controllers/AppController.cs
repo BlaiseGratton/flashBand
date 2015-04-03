@@ -87,16 +87,6 @@ namespace Pitch.Controllers
             Profile user = _repo.GetUserById(id);
             return user;
         }
-        //public async Task<IHttpActionResult> GetPlayer(int id)
-        //{
-        //    Player player = await db.Players.FindAsync(id);
-        //    if (player == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(player);
-        //}
 
         // GET: api/Search/Songs/ahardda
         [Authorize]
@@ -116,10 +106,7 @@ namespace Pitch.Controllers
             return _repo.fuzzySearchInstruments(searchString);
         }
 
-
-
-
-        // POST: api/Flashes/{request}
+        // POST: api/Flashes/request
         [Authorize]
         [Route("api/Flashes")]
         [HttpPost]
