@@ -1,7 +1,8 @@
 ﻿'use strict';
 angular.module('pitchApp')
 	.factory('authService', ['$http', '$q', 'localStorageService', function($http, $q, localStorageService){
-		var serviceBase = 'http://localhost:49328/';
+		// var serviceBase = 'http://localhost:49328/';
+		var serviceBase = '';
 		var authServiceFactory = {};
 		var _authentication = {
 			isAuth: false,
@@ -19,10 +20,10 @@ angular.module('pitchApp')
 			$http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function(response){
 				$http.get('api/Account/User/' + loginData.userName)
 					.success(function(data){
-                        localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, userId: data });
-                        _authentication.isAuth = true;
-                        _authentication.userName = loginData.userName;
-                        deferred.resolve(response);
+						localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, userId: data });
+						_authentication.isAuth = true;
+						_authentication.userName = loginData.userName;
+						deferred.resolve(response);
 					})
 					.error(function(err){
 						console.log(err.message);
