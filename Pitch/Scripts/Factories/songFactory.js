@@ -7,14 +7,14 @@ angular.module('pitchApp')
 
         songFactory.userSongs = [];
 
-        $http.get("api/Users/" + userId + "/Songs").then(
-            function(data){
-                songFactory.userSongs = data.data;
-                $rootScope.$broadcast("valuesUpdated");
-            }, function(err){
-                console.log(err.message);
-            }
-        );
+        //$http.get("/api/Users/" + userId + "/Songs").then(
+        //    function(data){
+        //        songFactory.userSongs = data.data;
+        //        $rootScope.$broadcast("valuesUpdated");
+        //    }, function(err){
+        //        console.log(err.message);
+        //    }
+        //);
 
         songFactory.updateSongs = function(songs){
             this.userSongs = songs;

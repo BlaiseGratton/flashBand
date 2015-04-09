@@ -1,6 +1,6 @@
 ﻿'use strict';
 angular.module('pitchApp')
-	.factory('authService', ['$http', '$q', 'localStorageService', function($http, $q, localStorageService){
+	.factory('authService', ['$http', '$q', 'localStorageService', '$rootScope', function($http, $q, localStorageService, $rootScope){
 		// var serviceBase = 'http://localhost:49328/';
 		var serviceBase = '';
 		var authServiceFactory = {};
@@ -39,6 +39,7 @@ angular.module('pitchApp')
 			localStorageService.remove('authorizationData');
 			_authentication.isAuth = false;
 			_authentication.userName = "";
+			$rootScope.$broadcast('logout');
 		};
 		var _fillAuthData = function(){
 			var authData = localStorageService.get('authorizationData');
