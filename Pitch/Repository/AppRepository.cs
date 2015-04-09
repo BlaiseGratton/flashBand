@@ -237,28 +237,28 @@ namespace Pitch.Repository
 
         public List<Song> GetUserSongs(int userId)
         {
-            IEnumerable<int> songIDs = from SongProfile in _dbContext.UserSongs
+            var songIDs = from SongProfile in _dbContext.UserSongs
                                        where SongProfile.ProfileID == userId
                                        select SongProfile.SongId;
             List<Models.Song> songs = new List<Models.Song>();
-            foreach (int songId in songIDs)
+            foreach (int songId in songIDs.ToList())
             {
                 songs.Add(GetSongById(songId));
             }
-            return songs.ToList();
+            return songs;
         }
         
         public List<Instrument> GetUserInstruments(int userId)
         {
-            IEnumerable<int> instrumentIDs = from InstrumentProfile in _dbContext.UserInstruments
+            var instrumentIDs = from InstrumentProfile in _dbContext.UserInstruments
                                        where InstrumentProfile.ProfileID == userId
                                        select InstrumentProfile.InstrumentId;
             List<Models.Instrument> instruments = new List<Models.Instrument>();
-            foreach (int instrumentId in instrumentIDs)
+            foreach (int instrumentId in instrumentIDs.ToList())
             {
                 instruments.Add(GetInstrumentById(instrumentId));
             }
-            return instruments.ToList();
+            return instruments;
         }
 
         public List<int> GetSongPlayers(int songId)
